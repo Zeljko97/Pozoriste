@@ -38,33 +38,51 @@ namespace Pozoriste
             return glumci;
         }
 
-        public bool AddZaposlen(String ime, String jmbg, String datumRodjenja, String mestoRodjenja, int radniStaz, String radnoMesto)
+        public bool AddGlumac(String ime, String datumRodjenja, int zaposlen, int brojPredstava)
         {
-            var query = new CypherQuery("CREATE (z:Zaposleni {ime:'" + ime + "', jmbg:'" + jmbg + "', datumRodjenja:'" + datumRodjenja + "', mestoRodjenja:'" + mestoRodjenja + "', radniStaz:" + radniStaz + ", radnoMesto:'" + radnoMesto + "'})", new Dictionary<string, object>(), CypherResultMode.Set);
-         // var query1 = new CypherQuery("MATCH (a:Zaposleni),(b:Pozoriste) WHERE a.ime:'" + ime + "' CREATE (a)-[:RADI_U]->(b)", new Dictionary<string, object>(), CypherResultMode.Set);
+            var query = new CypherQuery("CREATE (z:Glumac {ime:'" + ime + "',  datumRodjenja:'" + datumRodjenja + "', zaposlen:" + zaposlen + ", brojPredstava:" + brojPredstava  + "})", new Dictionary<string, object>(), CypherResultMode.Set);
 
             try
             {
                 ((IRawGraphClient)client).ExecuteCypher(query);
-                ((IRawGraphClient)client).ExecuteCypher(query1);
-            }
-            catch(Exception e)
-            {
-                return false;
-            }
-            try
-            {
-                
-                ((IRawGraphClient)client).ExecuteCypher(query1);
+
             }
             catch (Exception e)
             {
                 return false;
             }
+
             return true;
         }
 
+        public bool DeleteGlumac(String ime)
+        {
+            var query = new CypherQuery("MATCH (n:Glumac {ime: '" + ime + "' }) DELETE n", new Dictionary<string, object>(), CypherResultMode.Set);
+
+            try
+            {
+                ((IRawGraphClient)client).ExecuteCypher(query);
+
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+
+        public List<Glumac> vratiGlumceKojiGlumeU(String naslovPredstave)
+        {
+            var query = new CypherQuery("MATCH (n:Glumac)-[:GLUMI_U]-(p:Predstava) where p.naslov = '" + naslovPredstave + "' return n", new Dictionary<string, object>(), CypherResultMode.Set);
+            List<Glumac> glumci = ((IRawGraphClient)client).ExecuteGetCypherResults<Glumac>(query).ToList();
+            return glumci;
+        }
         #endregion
+        
+
+     
 
 
         #region Predstave
@@ -77,7 +95,16 @@ namespace Pozoriste
             return predstave;
         }
 
-        #endregion
+        public Predstava GetPredstava(string naslov)
+        {
+            Dictionary<string, object> queryDict = new Dictionary<string, object>();
+            var query = new CypherQuery("MATCH (Predstava{ naslov:'" + naslov + "'}) RETURN Predstava; ", queryDict, CypherResultMode.Set);
+
+            Predstava p = ((IRawGraphClient)client).ExecuteGetCypherResults<Predstava>(query).SingleOrDefault();
+            return p;
+        }
+#endregion
+      
 
 
         #region Reziseri
@@ -89,6 +116,40 @@ namespace Pozoriste
             List<Reziser> reditelji = ((IRawGraphClient)client).ExecuteGetCypherResults<Reziser>(query).ToList();
             return reditelji;
 
+        }
+
+        public bool AddReziser(String ime, int brojPredstava)
+        {
+            var query = new CypherQuery("CREATE (z:Reziser {ime:'" + ime + "', brojPredstava:" + brojPredstava + "})", new Dictionary<string, object>(), CypherResultMode.Set);
+
+            try
+            {
+                ((IRawGraphClient)client).ExecuteCypher(query);
+
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        public bool DeleteRezisera(String ime)
+        {
+            var query = new CypherQuery("MATCH (n:Reziser {ime: '" + ime + "' }) DELETE n", new Dictionary<string, object>(), CypherResultMode.Set);
+
+            try
+            {
+                ((IRawGraphClient)client).ExecuteCypher(query);
+
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+
+            return true;
         }
 
         #endregion
@@ -117,6 +178,68 @@ namespace Pozoriste
             return zaposleni;
         }
 
+        public bool AddZaposlen(String ime, String jmbg, String datumRodjenja, String mestoRodjenja, int radniStaz, String radnoMesto)
+        {
+            var query = new CypherQuery("CREATE (z:Zaposleni {ime:'" + ime + "', jmbg:'" + jmbg + "', datumRodjenja:'" + datumRodjenja + "', mestoRodjenja:'" + mestoRodjenja + "', radniStaz:" + radniStaz + ", radnoMesto:'" + radnoMesto + "'})", new Dictionary<string, object>(), CypherResultMode.Set);
+            
+            try
+            {
+                ((IRawGraphClient)client).ExecuteCypher(query);
+                
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+          
+            return true;
+        }
+
+        public bool DeleteZaposlen(String ime)
+        {
+            var query = new CypherQuery("MATCH (n:Zaposleni {ime: '" + ime + "' }) DELETE n", new Dictionary<string, object>(), CypherResultMode.Set);
+
+            try
+            {
+                ((IRawGraphClient)client).ExecuteCypher(query);
+
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+
+            return true;
+        }
+        #endregion
+
+        #region Repertoar
+        public void DodajPredstavuURepertoar(Predstava p)
+        {
+            Repertoar r = new Repertoar();
+
+            r.AddPredstava(p);
+        }
+
+        #endregion
+
+
+        #region Sale
+        public List<Sala> GetSale()
+        {
+            Dictionary<string, object> queryDict = new Dictionary<string, object>();
+            var query = new CypherQuery("match (n:Sala) return n;", queryDict, CypherResultMode.Set);
+
+            List<Sala> sale = ((IRawGraphClient)client).ExecuteGetCypherResults<Sala>(query).ToList();
+            return sale;
+        }
+
+        public Sala GetSala(int brojSale)
+        {
+            var query = new CypherQuery("match (n:Sala) where n.brojSale=" + brojSale + " return n", new Dictionary<string, object>(), CypherResultMode.Set);
+            Sala sala = ((IRawGraphClient)client).ExecuteGetCypherResults<Sala>(query).Single();
+            return sala;
+        }
         #endregion
     }
 }

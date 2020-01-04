@@ -7,15 +7,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Pozoriste.DomainModel;
 
 namespace Pozoriste
 {
+   
     public partial class Form1 : Form
     {
         DataProvider dp = new DataProvider();
         public Form1()
         {
             InitializeComponent();
+            dp.PoveziBazu();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -33,6 +36,52 @@ namespace Pozoriste
         private void Form1_Load(object sender, EventArgs e)
         {
             dp.PoveziBazu();
+        }
+
+        private void btnBlagajnik_Click(object sender, EventArgs e)
+        {
+            FormBlagajnik f = new FormBlagajnik();
+            f.Show();
+        }
+
+        private void btnPredstave_Click(object sender, EventArgs e)
+        {
+            List<Predstava> predstave = new List<Predstava>();
+
+            predstave = dp.GetPredstave();
+
+            foreach (Predstava p in predstave)
+            {
+                listPredstave.Items.Add(p.naslov);
+            }
+            
+        }
+
+        private void listPredstave_ItemChecked(object sender, ItemCheckedEventArgs e)
+        {
+            
+        }
+
+        private void listPredstave_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            
+        }
+
+        private void listPredstave_ItemActivate(object sender, EventArgs e)
+        {
+            listGlumci.Clear();
+            int i = listPredstave.SelectedIndices[0];
+            string s = listPredstave.Items[i].Text;
+            
+            List<Glumac> glumci = new List<Glumac>();
+            glumci = dp.vratiGlumceKojiGlumeU(s);
+
+            foreach(Glumac g in glumci)
+            {
+                listGlumci.Items.Add(g.ime);
+            }
+
+
         }
     }
 }

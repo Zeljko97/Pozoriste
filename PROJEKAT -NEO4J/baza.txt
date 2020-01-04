@@ -93,6 +93,10 @@ MATCH (a:Reziser),(b:Predstava) WHERE a.ime = 'Jagos Markovic' AND b.naslov = 'T
 
 CREATE(NarodnoPozoriste: Pozoriste {naziv:'Narodno Pozoriste', mesto:'Nis', brojZaposlenih: 50, brojSala: 2})
 
+//SALA
+CREATE(Sala1: Sala {brojSale:1, brojSedista:100, brojRedova:10, brojSedistaPoRedu:10})
+
+MATCH (a:Sala),(b:Pozoriste) CREATE (a)-[:NALAZI_SE]->(b)
 
 ////ZAPOSLENI
 

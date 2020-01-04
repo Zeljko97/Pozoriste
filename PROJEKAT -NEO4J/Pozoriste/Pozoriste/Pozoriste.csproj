@@ -61,7 +61,10 @@
     <Compile Include="DomainModel\Glumac.cs" />
     <Compile Include="DomainModel\Pisac.cs" />
     <Compile Include="DomainModel\Predstava.cs" />
+    <Compile Include="DomainModel\Repertoar.cs" />
     <Compile Include="DomainModel\Reziser.cs" />
+    <Compile Include="DomainModel\Sala.cs" />
+    <Compile Include="DomainModel\Sediste.cs" />
     <Compile Include="DomainModel\Uloga.cs" />
     <Compile Include="DomainModel\Zaposleni.cs" />
     <Compile Include="Form1.cs">
@@ -76,11 +79,29 @@
     <Compile Include="FormAdmin.Designer.cs">
       <DependentUpon>FormAdmin.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormBlagajnik.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormBlagajnik.Designer.cs">
+      <DependentUpon>FormBlagajnik.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormDodajZaposlenog.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormDodajZaposlenog.Designer.cs">
       <DependentUpon>FormDodajZaposlenog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormKreiranjeRepertoara.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormKreiranjeRepertoara.Designer.cs">
+      <DependentUpon>FormKreiranjeRepertoara.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormNoviReziser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormNoviReziser.Designer.cs">
+      <DependentUpon>FormNoviReziser.cs</DependentUpon>
     </Compile>
     <Compile Include="FormPocetna.cs">
       <SubType>Form</SubType>
@@ -96,8 +117,17 @@
     <EmbeddedResource Include="FormAdmin.resx">
       <DependentUpon>FormAdmin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormBlagajnik.resx">
+      <DependentUpon>FormBlagajnik.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormDodajZaposlenog.resx">
       <DependentUpon>FormDodajZaposlenog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormKreiranjeRepertoara.resx">
+      <DependentUpon>FormKreiranjeRepertoara.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormNoviReziser.resx">
+      <DependentUpon>FormNoviReziser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormPocetna.resx">
       <DependentUpon>FormPocetna.cs</DependentUpon>

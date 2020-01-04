@@ -26,10 +26,11 @@ namespace Pozoriste
 
         private void button1_Click(object sender, EventArgs e)
         {
-            List<Zaposleni> zaposleni = new List<Zaposleni>();
-            zaposleni = dp.GetZaposleni();
-
-            dataGridView1.DataSource = zaposleni;
+            Predstava p = new Predstava();
+            p = dp.GetPredstava("Radovan III");
+            List<Predstava> p1 = new List<Predstava>() ;
+            p1.Add(p);
+            dataGridView1.DataSource = p1;
         }
 
         private void FormPocetna_Load(object sender, EventArgs e)

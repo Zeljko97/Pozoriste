@@ -17,3 +17,25 @@ D:\FAKULTET\IV GODINA\Napredne baze podataka\PROJEKAT -NEO4J\Pozoriste\Pozoriste
 D:\FAKULTET\IV GODINA\Napredne baze podataka\PROJEKAT -NEO4J\Pozoriste\Pozoriste\obj\Debug\Pozoriste.csprojResolveAssemblyReference.cache
 D:\FAKULTET\IV GODINA\Napredne baze podataka\PROJEKAT -NEO4J\Pozoriste\Pozoriste\obj\Debug\Pozoriste.FormAdmin.resources
 D:\FAKULTET\IV GODINA\Napredne baze podataka\PROJEKAT -NEO4J\Pozoriste\Pozoriste\obj\Debug\Pozoriste.FormDodajZaposlenog.resources
+C:\GITHUB\Pozoriste\PROJEKAT -NEO4J\Pozoriste\Pozoriste\bin\Debug\Pozoriste.exe.config
+C:\GITHUB\Pozoriste\PROJEKAT -NEO4J\Pozoriste\Pozoriste\obj\Debug\Pozoriste.exe
+C:\GITHUB\Pozoriste\PROJEKAT -NEO4J\Pozoriste\Pozoriste\obj\Debug\Pozoriste.pdb
+C:\GITHUB\Pozoriste\PROJEKAT -NEO4J\Pozoriste\Pozoriste\obj\Debug\Pozoriste.csprojResolveAssemblyReference.cache
+C:\GITHUB\Pozoriste\PROJEKAT -NEO4J\Pozoriste\Pozoriste\obj\Debug\Pozoriste.Form1.resources
+C:\GITHUB\Pozoriste\PROJEKAT -NEO4J\Pozoriste\Pozoriste\obj\Debug\Pozoriste.FormAdmin.resources
+C:\GITHUB\Pozoriste\PROJEKAT -NEO4J\Pozoriste\Pozoriste\obj\Debug\Pozoriste.FormDodajZaposlenog.resources
+C:\GITHUB\Pozoriste\PROJEKAT -NEO4J\Pozoriste\Pozoriste\obj\Debug\Pozoriste.FormPocetna.resources
+C:\GITHUB\Pozoriste\PROJEKAT -NEO4J\Pozoriste\Pozoriste\obj\Debug\Pozoriste.Properties.Resources.resources
+C:\GITHUB\Pozoriste\PROJEKAT -NEO4J\Pozoriste\Pozoriste\obj\Debug\Pozoriste.csproj.GenerateResource.Cache
+C:\GITHUB\Pozoriste\PROJEKAT -NEO4J\Pozoriste\Pozoriste\bin\Debug\Pozoriste.exe
+C:\GITHUB\Pozoriste\PROJEKAT -NEO4J\Pozoriste\Pozoriste\bin\Debug\Pozoriste.pdb
+C:\GITHUB\Pozoriste\PROJEKAT -NEO4J\Pozoriste\Pozoriste\bin\Debug\Neo4j.Driver.dll
+C:\GITHUB\Pozoriste\PROJEKAT -NEO4J\Pozoriste\Pozoriste\bin\Debug\Neo4jClient.dll
+C:\GITHUB\Pozoriste\PROJEKAT -NEO4J\Pozoriste\Pozoriste\bin\Debug\Newtonsoft.Json.dll
+C:\GITHUB\Pozoriste\PROJEKAT -NEO4J\Pozoriste\Pozoriste\bin\Debug\Neo4j.Driver.xml
+C:\GITHUB\Pozoriste\PROJEKAT -NEO4J\Pozoriste\Pozoriste\bin\Debug\Neo4jClient.pdb
+C:\GITHUB\Pozoriste\PROJEKAT -NEO4J\Pozoriste\Pozoriste\bin\Debug\Neo4jClient.xml
+C:\GITHUB\Pozoriste\PROJEKAT -NEO4J\Pozoriste\Pozoriste\bin\Debug\Newtonsoft.Json.xml
+C:\GITHUB\Pozoriste\PROJEKAT -NEO4J\Pozoriste\Pozoriste\obj\Debug\Pozoriste.FormKreiranjeRepertoara.resources
+C:\GITHUB\Pozoriste\PROJEKAT -NEO4J\Pozoriste\Pozoriste\obj\Debug\Pozoriste.FormNoviReziser.resources
+C:\GITHUB\Pozoriste\PROJEKAT -NEO4J\Pozoriste\Pozoriste\obj\Debug\Pozoriste.FormBlagajnik.resources
