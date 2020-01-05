@@ -240,6 +240,86 @@ namespace Pozoriste
             Sala sala = ((IRawGraphClient)client).ExecuteGetCypherResults<Sala>(query).Single();
             return sala;
         }
+        public List<Sala> GetSalaPoVremenu(string a, string b)
+        {
+            var query = new CypherQuery("match (n:Sala)-[:U_SALI]-(p:Prikaz) where p.datum='" + a + "' and p.vreme='" + b + "' return n", new Dictionary<string, object>(), CypherResultMode.Set);
+            List<Sala> s = ((IRawGraphClient)client).ExecuteGetCypherResults<Sala>(query).ToList();
+            return s;
+        }
         #endregion
+
+        #region Prikazi
+
+        public List<Prikaz> GetPrikazi()
+        {
+            var query = new CypherQuery("MATCH (n:Prikaz) return n", new Dictionary<string, object>(), CypherResultMode.Set);
+            List<Prikaz> prikaz = ((IRawGraphClient)client).ExecuteGetCypherResults<Prikaz>(query).ToList();
+            return prikaz;
+        }
+
+        public List<Prikaz> GetPrikazZaPredstavu(String naslov)
+        {
+            var query = new CypherQuery("MATCH (n:Prikaz)-[:ODIGRAVA_SE]-(a:Predstava) where a.naslov='" + naslov + "' return n", new Dictionary<string, object>(), CypherResultMode.Set);
+            List<Prikaz> prikaz = ((IRawGraphClient)client).ExecuteGetCypherResults<Prikaz>(query).ToList();
+            return prikaz;
+        }
+
+        public Prikaz GetPrikazPoVremenu(string a, string b)
+        {
+            var query = new CypherQuery("match (p:Prikaz) where p.datum='" + a + "' and p.vreme='" + b + "' return p", new Dictionary<string, object>(), CypherResultMode.Set);
+            Prikaz s = ((IRawGraphClient)client).ExecuteGetCypherResults<Prikaz>(query).SingleOrDefault();
+            return s;
+        }
+        
+        #endregion
+
+
+        #region Rezervacija
+
+        public List<Rezervacija> GetRezervacije()
+        {
+            Dictionary<string, object> queryDict = new Dictionary<string, object>();
+            var query = new CypherQuery("match (n:Rezervacija) return n;", queryDict, CypherResultMode.Set);
+
+            List<Rezervacija> rezervacija = ((IRawGraphClient)client).ExecuteGetCypherResults<Rezervacija>(query).ToList();
+            return rezervacija;
+        }
+        public bool zauzmiSediste(Rezervacija r, String predstava, String sala)
+        {
+            var query2 = new CypherQuery("match ((q:Sala)-[:U_SALI]-(m:Prikaz)-[:ODIGRAVA_SE]-(b:Predstava))" +
+                " where m.datum='" + r.prikaz.datum + "' and m.vreme='" + r.prikaz.vreme + "'" +
+                " and b.naslov='" + predstava + "' and q.brojSale=" + Int32.Parse(sala)+
+                " create (n:Rezervacija {brojSedista:'" + r.brojRezSedista + "'})", new Dictionary<string, object>(), CypherResultMode.Set);
+           
+            try
+            {
+                ((IRawGraphClient)client).ExecuteCypher(query2);
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+            // return true;
+          /*  foreach (Sediste s in r.sedista)
+            {
+                var query = new CypherQuery("match (r:Rezervacija)-[:ZAKAZAO]-(b:Gost)" +
+                    "where r.brojSedista='" + r.brojRezSedista  +
+                    "create (n:Sediste {red:'" + s.red + "', brojSedista:'" + s.brojSedista + "'})", new Dictionary<string, object>(), CypherResultMode.Set);
+              
+                try
+                {
+                    ((IRawGraphClient)client).ExecuteCypher(query);
+                }
+                catch (Exception e)
+                {
+                    return false;
+                }
+
+            }*/
+            return true;
+
+        }
+        #endregion
+
     }
 }

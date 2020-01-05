@@ -61,7 +61,9 @@
     <Compile Include="DomainModel\Glumac.cs" />
     <Compile Include="DomainModel\Pisac.cs" />
     <Compile Include="DomainModel\Predstava.cs" />
+    <Compile Include="DomainModel\Prikaz.cs" />
     <Compile Include="DomainModel\Repertoar.cs" />
+    <Compile Include="DomainModel\Rezervacija.cs" />
     <Compile Include="DomainModel\Reziser.cs" />
     <Compile Include="DomainModel\Sala.cs" />
     <Compile Include="DomainModel\Sediste.cs" />
