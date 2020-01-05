@@ -57,7 +57,7 @@ namespace Pozoriste
 
         public bool DeleteGlumac(String ime)
         {
-            var query = new CypherQuery("MATCH (n:Glumac {ime: '" + ime + "' }) DELETE n", new Dictionary<string, object>(), CypherResultMode.Set);
+            var query = new CypherQuery("MATCH (n:Glumac {ime: '" + ime + "' })DETACH DELETE n", new Dictionary<string, object>(), CypherResultMode.Set);
 
             try
             {
@@ -185,19 +185,27 @@ namespace Pozoriste
             try
             {
                 ((IRawGraphClient)client).ExecuteCypher(query);
-                
             }
             catch (Exception e)
             {
                 return false;
             }
-          
+            //MATCH (a:Zaposleni),(b:Pozoriste) WHERE a.ime='Marina Stosic' CREATE (a)-[:RADI_U]->(b)
+            query = new CypherQuery("MATCH (a:Zaposleni),(b:Pozoriste) WHERE a.ime='" + ime + "' CREATE (a)-[:RADI_U]->(b)", new Dictionary<string, object>(), CypherResultMode.Set);
+            try
+            {
+                ((IRawGraphClient)client).ExecuteCypher(query);
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
             return true;
         }
 
         public bool DeleteZaposlen(String ime)
         {
-            var query = new CypherQuery("MATCH (n:Zaposleni {ime: '" + ime + "' }) DELETE n", new Dictionary<string, object>(), CypherResultMode.Set);
+            var query = new CypherQuery("MATCH (n:Zaposleni {ime: '" + ime + "' })DETACH DELETE n", new Dictionary<string, object>(), CypherResultMode.Set);
 
             try
             {

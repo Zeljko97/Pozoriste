@@ -46,7 +46,7 @@
             // 
             this.flowLayoutPanel1.AutoSize = true;
             this.flowLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(418, 53);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(305, 48);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.flowLayoutPanel1.MinimumSize = new System.Drawing.Size(38, 41);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";

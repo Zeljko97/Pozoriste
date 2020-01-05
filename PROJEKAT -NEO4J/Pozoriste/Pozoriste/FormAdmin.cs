@@ -62,15 +62,7 @@ namespace Pozoriste
 
         private void btnDodajGlumca_Click(object sender, EventArgs e)
         {
-            label1.Visible = true;
-            label2.Visible = true;
-            label3.Visible = true;
-            label4.Visible = true;
-            txtIme.Visible = true;
-            txtZaposlen.Visible = true;
-            dateTimePicker1.Visible = true;
-            cbPredstave.Visible = true;
-            btnDodajG.Visible = true;
+            vidljivost(true);
             for (int i = 0; i < 1000; i++)
             {
                 cbPredstave.Items.Add(i);
@@ -88,6 +80,7 @@ namespace Pozoriste
 
                 dp.AddGlumac(ime, datum, zaposlen, brojPredstava);
             MessageBox.Show("Dodali ste glumca");
+            vidljivost(false);
         }
 
         private void btnObrisiGlumca_Click(object sender, EventArgs e)
@@ -140,6 +133,34 @@ namespace Pozoriste
 
             dp.DeleteRezisera(ime);
             MessageBox.Show("Obrisali ste izabranog rezisera iz sistema.");
+        }
+
+        #region dodatno
+        private void vidljivost(bool s)
+        {
+            label1.Visible = s;
+            label2.Visible = s;
+            label3.Visible = s;
+            label4.Visible = s;
+            txtIme.Visible = s;
+            txtIme.Text = "";
+            txtZaposlen.Visible = s;
+            txtZaposlen.Text = "";
+            dateTimePicker1.Visible = s;
+            cbPredstave.Visible = s;
+            cbPredstave.SelectedValue = "";
+            btnDodajG.Visible = s;
+        }
+        #endregion
+
+        private void btnPredstave_Click(object sender, EventArgs e)
+        {
+            List<Predstava> predstave = new List<Predstava>();
+            predstave = dp.GetPredstave();
+
+            dataGridView1.DataSource = predstave;
+            dataGridView1.Columns["reditelj"].Visible = false;
+            dataGridView1.Columns["pisac"].Visible = false;
         }
     }
 }

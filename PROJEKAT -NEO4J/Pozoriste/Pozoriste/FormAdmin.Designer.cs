@@ -48,6 +48,7 @@
             this.btnObrisiZaposlenog = new System.Windows.Forms.Button();
             this.btnDodajRezisera = new System.Windows.Forms.Button();
             this.btnObrisiRezisera = new System.Windows.Forms.Button();
+            this.btnPredstave = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -64,7 +65,7 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(176, 12);
+            this.dataGridView1.Location = new System.Drawing.Point(154, 12);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(539, 260);
             this.dataGridView1.TabIndex = 1;
@@ -81,7 +82,7 @@
             // 
             // btnReziseri
             // 
-            this.btnReziseri.Location = new System.Drawing.Point(3, 141);
+            this.btnReziseri.Location = new System.Drawing.Point(3, 99);
             this.btnReziseri.Name = "btnReziseri";
             this.btnReziseri.Size = new System.Drawing.Size(75, 23);
             this.btnReziseri.TabIndex = 3;
@@ -227,7 +228,7 @@
             // 
             // btnDodajRezisera
             // 
-            this.btnDodajRezisera.Location = new System.Drawing.Point(3, 170);
+            this.btnDodajRezisera.Location = new System.Drawing.Point(3, 128);
             this.btnDodajRezisera.Name = "btnDodajRezisera";
             this.btnDodajRezisera.Size = new System.Drawing.Size(97, 23);
             this.btnDodajRezisera.TabIndex = 18;
@@ -237,7 +238,7 @@
             // 
             // btnObrisiRezisera
             // 
-            this.btnObrisiRezisera.Location = new System.Drawing.Point(3, 199);
+            this.btnObrisiRezisera.Location = new System.Drawing.Point(3, 157);
             this.btnObrisiRezisera.Name = "btnObrisiRezisera";
             this.btnObrisiRezisera.Size = new System.Drawing.Size(97, 23);
             this.btnObrisiRezisera.TabIndex = 19;
@@ -245,11 +246,22 @@
             this.btnObrisiRezisera.UseVisualStyleBackColor = true;
             this.btnObrisiRezisera.Click += new System.EventHandler(this.btnObrisiRezisera_Click);
             // 
+            // btnPredstave
+            // 
+            this.btnPredstave.Location = new System.Drawing.Point(3, 186);
+            this.btnPredstave.Name = "btnPredstave";
+            this.btnPredstave.Size = new System.Drawing.Size(112, 36);
+            this.btnPredstave.TabIndex = 20;
+            this.btnPredstave.Text = "Predstave";
+            this.btnPredstave.UseVisualStyleBackColor = true;
+            this.btnPredstave.Click += new System.EventHandler(this.btnPredstave_Click);
+            // 
             // FormAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(979, 341);
+            this.Controls.Add(this.btnPredstave);
             this.Controls.Add(this.btnObrisiRezisera);
             this.Controls.Add(this.btnDodajRezisera);
             this.Controls.Add(this.btnObrisiZaposlenog);
@@ -300,5 +312,6 @@
         private System.Windows.Forms.Button btnObrisiZaposlenog;
         private System.Windows.Forms.Button btnDodajRezisera;
         private System.Windows.Forms.Button btnObrisiRezisera;
+        private System.Windows.Forms.Button btnPredstave;
     }
 }
