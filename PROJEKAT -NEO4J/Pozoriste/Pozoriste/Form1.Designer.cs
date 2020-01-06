@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.btnAdmin = new System.Windows.Forms.Button();
             this.btnBlagajnik = new System.Windows.Forms.Button();
             this.btnPredstave = new System.Windows.Forms.Button();
@@ -39,9 +40,10 @@
             // 
             // btnAdmin
             // 
+            this.btnAdmin.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdmin.Location = new System.Drawing.Point(12, 24);
             this.btnAdmin.Name = "btnAdmin";
-            this.btnAdmin.Size = new System.Drawing.Size(75, 23);
+            this.btnAdmin.Size = new System.Drawing.Size(118, 39);
             this.btnAdmin.TabIndex = 1;
             this.btnAdmin.Text = "Administrator";
             this.btnAdmin.UseVisualStyleBackColor = true;
@@ -49,9 +51,10 @@
             // 
             // btnBlagajnik
             // 
+            this.btnBlagajnik.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBlagajnik.Location = new System.Drawing.Point(12, 69);
             this.btnBlagajnik.Name = "btnBlagajnik";
-            this.btnBlagajnik.Size = new System.Drawing.Size(75, 23);
+            this.btnBlagajnik.Size = new System.Drawing.Size(118, 39);
             this.btnBlagajnik.TabIndex = 2;
             this.btnBlagajnik.Text = "Blagajnik";
             this.btnBlagajnik.UseVisualStyleBackColor = true;
@@ -59,7 +62,8 @@
             // 
             // btnPredstave
             // 
-            this.btnPredstave.Location = new System.Drawing.Point(108, 24);
+            this.btnPredstave.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPredstave.Location = new System.Drawing.Point(167, 33);
             this.btnPredstave.Name = "btnPredstave";
             this.btnPredstave.Size = new System.Drawing.Size(289, 23);
             this.btnPredstave.TabIndex = 3;
@@ -70,7 +74,7 @@
             // listPredstave
             // 
             this.listPredstave.HideSelection = false;
-            this.listPredstave.Location = new System.Drawing.Point(108, 69);
+            this.listPredstave.Location = new System.Drawing.Point(167, 106);
             this.listPredstave.Name = "listPredstave";
             this.listPredstave.Size = new System.Drawing.Size(307, 194);
             this.listPredstave.TabIndex = 4;
@@ -84,7 +88,7 @@
             // listGlumci
             // 
             this.listGlumci.HideSelection = false;
-            this.listGlumci.Location = new System.Drawing.Point(475, 69);
+            this.listGlumci.Location = new System.Drawing.Point(507, 106);
             this.listGlumci.Name = "listGlumci";
             this.listGlumci.Size = new System.Drawing.Size(241, 194);
             this.listGlumci.TabIndex = 5;
@@ -93,7 +97,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(105, 53);
+            this.label1.Location = new System.Drawing.Point(164, 79);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(127, 13);
             this.label1.TabIndex = 6;
@@ -102,7 +106,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(472, 53);
+            this.label2.Location = new System.Drawing.Point(504, 83);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(97, 13);
             this.label2.TabIndex = 7;
@@ -112,7 +116,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(748, 285);
+            this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(783, 345);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.listGlumci);
@@ -120,8 +126,10 @@
             this.Controls.Add(this.btnPredstave);
             this.Controls.Add(this.btnBlagajnik);
             this.Controls.Add(this.btnAdmin);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
-            this.Text = "Theatre";
+            this.Text = "     Theatre";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

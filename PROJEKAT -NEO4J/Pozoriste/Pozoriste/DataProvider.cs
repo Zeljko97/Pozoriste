@@ -37,11 +37,19 @@ namespace Pozoriste
             List<Glumac> glumci = ((IRawGraphClient)client).ExecuteGetCypherResults<Glumac>(query).ToList();
             return glumci;
         }
+        public Glumac GetGlumac(string ime)
+        {
+            Dictionary<string, object> queryDict = new Dictionary<string, object>();
+            var query = new CypherQuery("MATCH (g:Glumac{ ime:'" + ime + "'}) RETURN g; ", queryDict, CypherResultMode.Set);
 
+            Glumac p = ((IRawGraphClient)client).ExecuteGetCypherResults<Glumac>(query).SingleOrDefault();
+            return p;
+
+        }
         public bool AddGlumac(String ime, String datumRodjenja, int zaposlen, int brojPredstava)
         {
             var query = new CypherQuery("CREATE (z:Glumac {ime:'" + ime + "',  datumRodjenja:'" + datumRodjenja + "', zaposlen:" + zaposlen + ", brojPredstava:" + brojPredstava  + "})", new Dictionary<string, object>(), CypherResultMode.Set);
-
+            //treba da se doda i veza RADI_U Narodno Pozoriste.
             try
             {
                 ((IRawGraphClient)client).ExecuteCypher(query);
@@ -51,7 +59,17 @@ namespace Pozoriste
             {
                 return false;
             }
-
+            //dodamo da radi u pozoriste
+             query = new CypherQuery("MATCH(a: Glumac),(b: Pozoriste) WHERE a.ime = '" + ime + "' MERGE (a) -[:RADI_U]->(b)", new Dictionary<string, object>(), CypherResultMode.Set);
+            // MATCH(a: Zaposleni),(b: Pozoriste) WHERE a.ime = 'Marina Stosic' CREATE(a) -[:RADI_U]->(b)
+            try
+            {
+                ((IRawGraphClient)client).ExecuteCypher(query);
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
             return true;
         }
 
@@ -79,6 +97,32 @@ namespace Pozoriste
             List<Glumac> glumci = ((IRawGraphClient)client).ExecuteGetCypherResults<Glumac>(query).ToList();
             return glumci;
         }
+        public List<Predstava> vratiPredstaveUKojojGlumi(string ime)
+        {
+            var query = new CypherQuery("MATCH (n:Glumac)-[:GLUMI_U]-(p:Predstava) where n.ime = '" + ime + "' return p", new Dictionary<string, object>(), CypherResultMode.Set);
+            List<Predstava> predstave = ((IRawGraphClient)client).ExecuteGetCypherResults<Predstava>(query).ToList();
+            return predstave;
+        }
+        public List<Predstava> vratiPredstaveUKojojNEGlumi(string ime) // nisam uspeo lepo da napravim!
+        {
+            var query = new CypherQuery("MATCH (n:Glumac)-[:GLUMI_U]-(p:Predstava) where  n.ime = '" + ime + "' return p", new Dictionary<string, object>(), CypherResultMode.Set);
+            List<Predstava> predstave = ((IRawGraphClient)client).ExecuteGetCypherResults<Predstava>(query).ToList();
+            return predstave;
+        }
+        public bool DodeliUlogu(string ime, string naslov, string uloga)
+        {
+            //MATCH (a:Glumac),(b:Predstava) WHERE a.ime = 'Slobodan Tesic' AND b.naslov = 'Tako je (ako vam se tako cini)' CREATE (a)-[:GLUMI_U {uloga:['Sobar Agacijevih']}]->(b)
+            var query = new CypherQuery("MATCH (a:Glumac),(b:Predstava) WHERE a.ime = '" + ime + "'AND b.naslov ='" + naslov + "' MERGE (a)-[:GLUMI_U {uloga:['"+uloga+"']}]->(b)", new Dictionary<string, object>(), CypherResultMode.Set);
+            try
+            {
+                ((IRawGraphClient)client).ExecuteCypher(query);
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+            return true;
+        }
 
         public List<Predstava> vratiPredstaveKojeJeRezirao(string reziser)
         {
@@ -97,7 +141,6 @@ namespace Pozoriste
             List<Predstava> predstave = ((IRawGraphClient)client).ExecuteGetCypherResults<Predstava>(query).ToList();
             return predstave;
         }
-
         public Predstava GetPredstava(string naslov)
         {
             Dictionary<string, object> queryDict = new Dictionary<string, object>();
@@ -106,10 +149,10 @@ namespace Pozoriste
             Predstava p = ((IRawGraphClient)client).ExecuteGetCypherResults<Predstava>(query).SingleOrDefault();
             return p;
         }
-
-        public bool DeletePredstava(string naslov)
+        public bool AddPredstava(string naslov,string zanr,string kratakOpis)
         {
-            var query = new CypherQuery("MATCH (n:Predstava {naslov: '" + naslov + "' }) DETACH DELETE n", new Dictionary<string, object>(), CypherResultMode.Set);
+            //CREATE (RadovanIII:Predstava {naslov:'Radovan III', zanr:'komedija',kratakOpis:'Urnebesna komedija koju treba videti.'})
+            var query = new CypherQuery("CREATE (a:Predstava {naslov:'" + naslov + "', zanr:'" + zanr + "', kratakOpis:'" + kratakOpis + "'})", new Dictionary<string, object>(), CypherResultMode.Set);
             try
             {
                 ((IRawGraphClient)client).ExecuteCypher(query);
@@ -120,11 +163,34 @@ namespace Pozoriste
             }
             return true;
         }
-
-#endregion
-      
-
-
+        public bool DeletePredstava(string naslov)
+        {
+            var query = new CypherQuery("MATCH (n:Predstava {naslov: '" + naslov + "' }) DETACH DELETE n", new Dictionary<string, object>(), CypherResultMode.Set);
+            try
+            {
+                ((IRawGraphClient)client).ExecuteCypher(query);
+            }
+            catch (Exception )
+            {
+                return false;
+            }
+            return true;
+        }
+        public bool UpdatePredstava(String naslov, String zanr, String kratakOpis)
+        {
+            //MATCH (p:Predstava {naslov:'NovaPredstava'}) SET p = {kratakOpis:'Nov opis' , naslov:'Rode' , zanr: 'komedija'}return p
+            var query = new CypherQuery("MATCH (p:Predstava { naslov:'" + naslov + "'}) SET p = { kratakOpis:'" + kratakOpis + "', naslov:'" + naslov + "', zanr:'" + zanr + "'} return p", new Dictionary<string, object>(), CypherResultMode.Set);
+            try
+            {
+                ((IRawGraphClient)client).ExecuteCypher(query);
+            }
+            catch (Exception )
+            {
+                return false;
+            }
+            return true;
+        }
+        #endregion
         #region Reziseri
         public List<Reziser> GetReziseri()
         {
@@ -168,11 +234,9 @@ namespace Pozoriste
             return true;
 
         }
-
         public bool DeleteRezisera(String ime)
         {
             var query = new CypherQuery("MATCH (n:Reziser {ime: '" + ime + "' })DETACH DELETE n", new Dictionary<string, object>(), CypherResultMode.Set);
-
             try
             {
                 ((IRawGraphClient)client).ExecuteCypher(query);
@@ -182,7 +246,6 @@ namespace Pozoriste
             {
                 return false;
             }
-
             return true;
         }
 
@@ -197,6 +260,50 @@ namespace Pozoriste
             List<Pisac> pisci = ((IRawGraphClient)client).ExecuteGetCypherResults<Pisac>(query).ToList();
             return pisci;
         }
+        public bool AddPisac(String ime,int brojPredstava) 
+        {
+            //CREATE (Dusan:Pisac {ime:'Dusan Kovacevic', brojPredstava:40})
+            var query = new CypherQuery("CREATE (p:Pisac {ime:'" + ime + "', brojPredstava:" + brojPredstava + "})", new Dictionary<string, object>(), CypherResultMode.Set);
+            try
+            {
+                ((IRawGraphClient)client).ExecuteCypher(query);
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+            return true;
+        }
+        public bool DodeliPisacDelo(string ime, string naslovPredstave)
+        {
+            //MATCH (a:Pisac),(b:Predstava) WHERE a.ime = 'Dusan Kovacevic' AND b.naslov = 'Tako je (ako vam se tako cini)' CREATE (a)-[:REZIRAO {Predstava:['Tako je (ako vam se tako cini']}]->(b)
+            var query = new CypherQuery("MATCH (a:Pisac),(b:Predstava) WHERE a.ime = '" + ime + "' AND b.naslov = '" + naslovPredstave + "' MERGE (a)-[:NAPISAO {Predstava:['" + naslovPredstave + "']}]->(b)", new Dictionary<string, object>(), CypherResultMode.Set);
+            try
+            {
+                ((IRawGraphClient)client).ExecuteCypher(query);
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+            return true;
+        }
+        public bool DeletePisac(String ime)
+        {
+            var query = new CypherQuery("MATCH (n:Pisac {ime: '" + ime + "' }) DETACH DELETE n", new Dictionary<string, object>(), CypherResultMode.Set);
+            try
+            {
+                ((IRawGraphClient)client).ExecuteCypher(query);
+
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
 
 
         #endregion
@@ -270,7 +377,6 @@ namespace Pozoriste
             }
             return true;
         }
-
         public bool DeleteZaposlen(String ime)
         {
             var query = new CypherQuery("MATCH (n:Zaposleni {ime: '" + ime + "' })DETACH DELETE n", new Dictionary<string, object>(), CypherResultMode.Set);

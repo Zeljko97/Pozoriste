@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormNoviReziser));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtIme = new System.Windows.Forms.TextBox();
@@ -87,16 +88,16 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PapayaWhip;
-            this.ClientSize = new System.Drawing.Size(257, 156);
+            this.ClientSize = new System.Drawing.Size(266, 156);
             this.Controls.Add(this.btnDodaj);
             this.Controls.Add(this.txtBrojPredstava);
             this.Controls.Add(this.txtIme);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "FormNoviReziser";
-            this.ShowIcon = false;
             this.Text = "Dodavanje novog rezisera";
             this.ResumeLayout(false);
             this.PerformLayout();

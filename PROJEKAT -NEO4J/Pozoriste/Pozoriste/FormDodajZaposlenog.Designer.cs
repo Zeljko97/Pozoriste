@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormDodajZaposlenog));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -101,7 +102,7 @@
             // txtIme
             // 
             this.txtIme.Location = new System.Drawing.Point(141, 22);
-            this.txtIme.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtIme.Margin = new System.Windows.Forms.Padding(4);
             this.txtIme.Name = "txtIme";
             this.txtIme.Size = new System.Drawing.Size(161, 25);
             this.txtIme.TabIndex = 5;
@@ -109,7 +110,7 @@
             // txtJMBG
             // 
             this.txtJMBG.Location = new System.Drawing.Point(141, 73);
-            this.txtJMBG.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtJMBG.Margin = new System.Windows.Forms.Padding(4);
             this.txtJMBG.Name = "txtJMBG";
             this.txtJMBG.Size = new System.Drawing.Size(161, 25);
             this.txtJMBG.TabIndex = 6;
@@ -130,7 +131,7 @@
             this.dateTimePicker1.CustomFormat = "yyyy/MM/dd";
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePicker1.Location = new System.Drawing.Point(141, 121);
-            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(4);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(159, 25);
             this.dateTimePicker1.TabIndex = 8;
@@ -138,7 +139,7 @@
             // txtMesto
             // 
             this.txtMesto.Location = new System.Drawing.Point(141, 170);
-            this.txtMesto.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtMesto.Margin = new System.Windows.Forms.Padding(4);
             this.txtMesto.Name = "txtMesto";
             this.txtMesto.Size = new System.Drawing.Size(159, 25);
             this.txtMesto.TabIndex = 9;
@@ -147,7 +148,7 @@
             // 
             this.cbRadniStaz.FormattingEnabled = true;
             this.cbRadniStaz.Location = new System.Drawing.Point(141, 230);
-            this.cbRadniStaz.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbRadniStaz.Margin = new System.Windows.Forms.Padding(4);
             this.cbRadniStaz.Name = "cbRadniStaz";
             this.cbRadniStaz.Size = new System.Drawing.Size(159, 27);
             this.cbRadniStaz.TabIndex = 10;
@@ -162,7 +163,7 @@
             "Cistacica",
             ""});
             this.cbRadnoMesto.Location = new System.Drawing.Point(141, 285);
-            this.cbRadnoMesto.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbRadnoMesto.Margin = new System.Windows.Forms.Padding(4);
             this.cbRadnoMesto.Name = "cbRadnoMesto";
             this.cbRadnoMesto.Size = new System.Drawing.Size(159, 27);
             this.cbRadnoMesto.TabIndex = 11;
@@ -171,7 +172,7 @@
             // 
             this.btnDodaj.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDodaj.Location = new System.Drawing.Point(84, 320);
-            this.btnDodaj.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnDodaj.Margin = new System.Windows.Forms.Padding(4);
             this.btnDodaj.Name = "btnDodaj";
             this.btnDodaj.Size = new System.Drawing.Size(163, 51);
             this.btnDodaj.TabIndex = 12;
@@ -199,11 +200,11 @@
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FormDodajZaposlenog";
-            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dodavanje novog zaposlenog";
             this.Load += new System.EventHandler(this.FormDodajZaposlenog_Load);

@@ -93,11 +93,23 @@
     <Compile Include="FormDodajZaposlenog.Designer.cs">
       <DependentUpon>FormDodajZaposlenog.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormDodavanjePredstave.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDodavanjePredstave.Designer.cs">
+      <DependentUpon>FormDodavanjePredstave.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormDodavanjeSale.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormDodavanjeSale.Designer.cs">
       <DependentUpon>FormDodavanjeSale.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormDodelaUloge.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDodelaUloge.Designer.cs">
+      <DependentUpon>FormDodelaUloge.cs</DependentUpon>
     </Compile>
     <Compile Include="FormKreiranjeRepertoara.cs">
       <SubType>Form</SubType>
@@ -111,11 +123,23 @@
     <Compile Include="FormNoviReziser.Designer.cs">
       <DependentUpon>FormNoviReziser.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormPisac.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPisac.Designer.cs">
+      <DependentUpon>FormPisac.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormPocetna.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormPocetna.Designer.cs">
       <DependentUpon>FormPocetna.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormUpdatePredstava.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormUpdatePredstava.Designer.cs">
+      <DependentUpon>FormUpdatePredstava.cs</DependentUpon>
     </Compile>
     <Compile Include="FormUpdateZaposleni.cs">
       <SubType>Form</SubType>
@@ -137,8 +161,14 @@
     <EmbeddedResource Include="FormDodajZaposlenog.resx">
       <DependentUpon>FormDodajZaposlenog.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormDodavanjePredstave.resx">
+      <DependentUpon>FormDodavanjePredstave.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormDodavanjeSale.resx">
       <DependentUpon>FormDodavanjeSale.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormDodelaUloge.resx">
+      <DependentUpon>FormDodelaUloge.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormKreiranjeRepertoara.resx">
       <DependentUpon>FormKreiranjeRepertoara.cs</DependentUpon>
@@ -146,8 +176,14 @@
     <EmbeddedResource Include="FormNoviReziser.resx">
       <DependentUpon>FormNoviReziser.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormPisac.resx">
+      <DependentUpon>FormPisac.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormPocetna.resx">
       <DependentUpon>FormPocetna.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormUpdatePredstava.resx">
+      <DependentUpon>FormUpdatePredstava.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormUpdateZaposleni.resx">
       <DependentUpon>FormUpdateZaposleni.cs</DependentUpon>

@@ -14,7 +14,10 @@ namespace Pozoriste
     public partial class FormAdmin : Form
     {
         DataProvider dp = new DataProvider();
+        //za update
         public static Zaposleni z = null;
+        public static Predstava predstava = null;
+        public static Glumac glumac = null;
         public FormAdmin()
         {
             InitializeComponent();
@@ -84,8 +87,12 @@ namespace Pozoriste
           
             string ime = (string)dataGridView3[0, indexRow].Value;
 
-            dp.DeleteGlumac(ime);
-            MessageBox.Show("Obrisali ste izabranog glumca iz sistema.");
+            if (dp.DeleteGlumac(ime))
+            {
+                MessageBox.Show("Obrisali ste izabranog glumca iz sistema.");
+            }
+            else { MessageBox.Show("Doslo je do greske."); }
+           
         }
 
         private void btnObrisiZaposlenog_Click(object sender, EventArgs e)
@@ -252,23 +259,23 @@ namespace Pozoriste
             
         }
         #endregion
-
+        #region predstave
         private void btnPrikaziPredstave_Click(object sender, EventArgs e)
         {
             List<Predstava> predstave = new List<Predstava>();
-
             predstave = dp.GetPredstave();
 
             dataGridView5.DataSource = predstave;
             dataGridView5.Columns["kratakOpis"].Visible = false;
             dataGridView5.Columns["reditelj"].Visible = false;
+            dataGridView5.Columns["pisac"].Visible = false;
         }
 
         private void dataGridView5_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (dataGridView5.SelectedRows.Count == 0)
             {
-                MessageBox.Show("Niste izabrali glumca!");
+                MessageBox.Show("Niste izabrali predstavu!","Greska",MessageBoxButtons.OK,MessageBoxIcon.Error);
                 return;
             }
             int indexRow = dataGridView5.CurrentRow.Index;
@@ -281,17 +288,72 @@ namespace Pozoriste
         {
             if (dataGridView5.SelectedRows.Count == 0)
             {
-                MessageBox.Show("Niste izabrali glumca!");
+                MessageBox.Show("Niste izabrali predstavu!", "Greska", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             int indexRow = dataGridView5.CurrentRow.Index;
             string naslov = (string)dataGridView5[0, indexRow].Value;
 
+            if (dp.DeletePredstava(naslov))
+            {
+                MessageBox.Show("Uspesno brisanje predstave "+naslov, "Predstava " + naslov + " je uspesno azurirana dodata ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show(" Neuspesno brisanje predstave!", "  GRESKA!! ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnUpdate_Click(object sender, EventArgs e)
         {
+            if (dataGridView5.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Niste izabrali predstavu!", "Greska", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            int indexRow = dataGridView5.CurrentRow.Index;
+            string naslov = (string)dataGridView5[0, indexRow].Value;
+            predstava = dp.GetPredstava(naslov);
+            FormUpdatePredstava fup = new FormUpdatePredstava();
+            fup.Show();
+
+        }
+
+        private void btnDodajPredstavu_Click(object sender, EventArgs e)
+        {
+            FormDodavanjePredstave fdp = new FormDodavanjePredstave();
+            fdp.Show();
+        }
+        private void btnDodajPisca_Click(object sender, EventArgs e)
+        {
+            if (dataGridView5.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Niste izabrali predstavu!", "Greska", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            int indexRow = dataGridView5.CurrentRow.Index;
+            string naslov = (string)dataGridView5[0, indexRow].Value;
+            predstava = dp.GetPredstava(naslov);
+            FormPisac fp = new FormPisac();
+            fp.Show();
+        }
+        #endregion
+
+
+
+        private void btnDodeliUlogu_Click(object sender, EventArgs e)
+        {
+            if (dataGridView3.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Niste izabrali glumca!");
+                return;
+            }
+            int indexRow = dataGridView3.CurrentRow.Index;
+            string ime = (string)dataGridView3[0, indexRow].Value;
+            glumac = dp.GetGlumac(ime);
+            FormDodelaUloge fdu = new FormDodelaUloge();
+            fdu.Show();
 
         }
     }

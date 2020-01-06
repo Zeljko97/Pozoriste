@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormKreiranjeRepertoara));
             this.btnPredstave = new System.Windows.Forms.Button();
             this.listPredstave = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -159,9 +160,9 @@
             this.Controls.Add(this.listPredstave);
             this.Controls.Add(this.btnPredstave);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "FormKreiranjeRepertoara";
-            this.ShowIcon = false;
             this.Text = "Kreiranje Repertoara";
             this.Load += new System.EventHandler(this.FormKreiranjeRepertoara_Load);
             this.ResumeLayout(false);

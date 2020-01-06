@@ -36,6 +36,7 @@ namespace Pozoriste
         private void Form1_Load(object sender, EventArgs e)
         {
             dp.PoveziBazu();
+            this.ForeColor = Color.Black;
         }
 
         private void btnBlagajnik_Click(object sender, EventArgs e)

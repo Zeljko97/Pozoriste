@@ -32,6 +32,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAdmin));
             this.btnZaposleni = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.btnGlumci = new System.Windows.Forms.Button();
@@ -65,19 +66,20 @@
             this.btnObrisiRezisera = new System.Windows.Forms.Button();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.label7 = new System.Windows.Forms.Label();
-            this.dataGridView4 = new System.Windows.Forms.DataGridView();
-            this.btnPrikaziSale = new System.Windows.Forms.Button();
-            this.btnDodajSalu = new System.Windows.Forms.Button();
             this.btnObrisiSalu = new System.Windows.Forms.Button();
+            this.btnDodajSalu = new System.Windows.Forms.Button();
+            this.btnPrikaziSale = new System.Windows.Forms.Button();
+            this.dataGridView4 = new System.Windows.Forms.DataGridView();
+            this.label7 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.label8 = new System.Windows.Forms.Label();
-            this.btnPrikaziPredstave = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.dataGridView5 = new System.Windows.Forms.DataGridView();
+            this.btnDodajPisca = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.btnDodajPredstavu = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.btnPrikaziPredstave = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.btnDodeliUlogu = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -141,9 +143,9 @@
             // 
             this.btnRepertoar.BackColor = System.Drawing.Color.Bisque;
             this.btnRepertoar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRepertoar.Location = new System.Drawing.Point(8, 36);
+            this.btnRepertoar.Location = new System.Drawing.Point(256, 36);
             this.btnRepertoar.Name = "btnRepertoar";
-            this.btnRepertoar.Size = new System.Drawing.Size(112, 29);
+            this.btnRepertoar.Size = new System.Drawing.Size(112, 40);
             this.btnRepertoar.TabIndex = 5;
             this.btnRepertoar.Text = "Kreiraj repertoar";
             this.btnRepertoar.UseVisualStyleBackColor = false;
@@ -164,7 +166,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(10, 133);
+            this.label1.Location = new System.Drawing.Point(10, 151);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(85, 15);
             this.label1.TabIndex = 7;
@@ -175,7 +177,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(7, 175);
+            this.label2.Location = new System.Drawing.Point(7, 193);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(95, 15);
             this.label2.TabIndex = 8;
@@ -186,7 +188,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(10, 217);
+            this.label3.Location = new System.Drawing.Point(10, 235);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(110, 15);
             this.label3.TabIndex = 9;
@@ -197,7 +199,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(7, 261);
+            this.label4.Location = new System.Drawing.Point(7, 279);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(143, 15);
             this.label4.TabIndex = 10;
@@ -207,7 +209,7 @@
             // txtIme
             // 
             this.txtIme.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtIme.Location = new System.Drawing.Point(13, 151);
+            this.txtIme.Location = new System.Drawing.Point(13, 169);
             this.txtIme.Name = "txtIme";
             this.txtIme.Size = new System.Drawing.Size(116, 21);
             this.txtIme.TabIndex = 11;
@@ -216,7 +218,7 @@
             // txtZaposlen
             // 
             this.txtZaposlen.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtZaposlen.Location = new System.Drawing.Point(13, 237);
+            this.txtZaposlen.Location = new System.Drawing.Point(13, 255);
             this.txtZaposlen.Name = "txtZaposlen";
             this.txtZaposlen.Size = new System.Drawing.Size(116, 21);
             this.txtZaposlen.TabIndex = 12;
@@ -226,7 +228,7 @@
             // 
             this.cbPredstave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbPredstave.FormattingEnabled = true;
-            this.cbPredstave.Location = new System.Drawing.Point(48, 279);
+            this.cbPredstave.Location = new System.Drawing.Point(48, 297);
             this.cbPredstave.Name = "cbPredstave";
             this.cbPredstave.Size = new System.Drawing.Size(54, 23);
             this.cbPredstave.TabIndex = 13;
@@ -237,7 +239,7 @@
             this.dateTimePicker1.CustomFormat = "yyyy/MM/dd";
             this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(9, 193);
+            this.dateTimePicker1.Location = new System.Drawing.Point(9, 211);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(120, 21);
             this.dateTimePicker1.TabIndex = 14;
@@ -246,7 +248,7 @@
             // btnDodajG
             // 
             this.btnDodajG.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDodajG.Location = new System.Drawing.Point(24, 309);
+            this.btnDodajG.Location = new System.Drawing.Point(33, 330);
             this.btnDodajG.Name = "btnDodajG";
             this.btnDodajG.Size = new System.Drawing.Size(87, 27);
             this.btnDodajG.TabIndex = 15;
@@ -330,6 +332,7 @@
             // 
             this.panel3.BackColor = System.Drawing.Color.Silver;
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel3.Controls.Add(this.btnDodeliUlogu);
             this.panel3.Controls.Add(this.label6);
             this.panel3.Controls.Add(this.btnGlumci);
             this.panel3.Controls.Add(this.btnDodajGlumca);
@@ -345,7 +348,7 @@
             this.panel3.Controls.Add(this.label2);
             this.panel3.Location = new System.Drawing.Point(12, 182);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(153, 359);
+            this.panel3.Size = new System.Drawing.Size(153, 364);
             this.panel3.TabIndex = 23;
             // 
             // label6
@@ -474,15 +477,38 @@
             this.panel4.Size = new System.Drawing.Size(412, 236);
             this.panel4.TabIndex = 27;
             // 
-            // label7
+            // btnObrisiSalu
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(13, 9);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(32, 16);
-            this.label7.TabIndex = 20;
-            this.label7.Text = "Sale";
+            this.btnObrisiSalu.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnObrisiSalu.Location = new System.Drawing.Point(138, 28);
+            this.btnObrisiSalu.Name = "btnObrisiSalu";
+            this.btnObrisiSalu.Size = new System.Drawing.Size(124, 27);
+            this.btnObrisiSalu.TabIndex = 24;
+            this.btnObrisiSalu.Text = "Obrisi Salu";
+            this.btnObrisiSalu.UseVisualStyleBackColor = true;
+            this.btnObrisiSalu.Click += new System.EventHandler(this.btnObrisiSalu_Click);
+            // 
+            // btnDodajSalu
+            // 
+            this.btnDodajSalu.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDodajSalu.Location = new System.Drawing.Point(8, 61);
+            this.btnDodajSalu.Name = "btnDodajSalu";
+            this.btnDodajSalu.Size = new System.Drawing.Size(124, 27);
+            this.btnDodajSalu.TabIndex = 23;
+            this.btnDodajSalu.Text = "Dodaj salu";
+            this.btnDodajSalu.UseVisualStyleBackColor = true;
+            this.btnDodajSalu.Click += new System.EventHandler(this.btnDodajSalu_Click);
+            // 
+            // btnPrikaziSale
+            // 
+            this.btnPrikaziSale.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPrikaziSale.Location = new System.Drawing.Point(8, 28);
+            this.btnPrikaziSale.Name = "btnPrikaziSale";
+            this.btnPrikaziSale.Size = new System.Drawing.Size(124, 27);
+            this.btnPrikaziSale.TabIndex = 22;
+            this.btnPrikaziSale.Text = "Prikazi Sale";
+            this.btnPrikaziSale.UseVisualStyleBackColor = true;
+            this.btnPrikaziSale.Click += new System.EventHandler(this.btnPrikaziSale_Click);
             // 
             // dataGridView4
             // 
@@ -503,46 +529,23 @@
             this.dataGridView4.Size = new System.Drawing.Size(406, 135);
             this.dataGridView4.TabIndex = 21;
             // 
-            // btnPrikaziSale
+            // label7
             // 
-            this.btnPrikaziSale.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPrikaziSale.Location = new System.Drawing.Point(8, 28);
-            this.btnPrikaziSale.Name = "btnPrikaziSale";
-            this.btnPrikaziSale.Size = new System.Drawing.Size(124, 27);
-            this.btnPrikaziSale.TabIndex = 22;
-            this.btnPrikaziSale.Text = "Prikazi Sale";
-            this.btnPrikaziSale.UseVisualStyleBackColor = true;
-            this.btnPrikaziSale.Click += new System.EventHandler(this.btnPrikaziSale_Click);
-            // 
-            // btnDodajSalu
-            // 
-            this.btnDodajSalu.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDodajSalu.Location = new System.Drawing.Point(8, 61);
-            this.btnDodajSalu.Name = "btnDodajSalu";
-            this.btnDodajSalu.Size = new System.Drawing.Size(124, 27);
-            this.btnDodajSalu.TabIndex = 23;
-            this.btnDodajSalu.Text = "Dodaj salu";
-            this.btnDodajSalu.UseVisualStyleBackColor = true;
-            this.btnDodajSalu.Click += new System.EventHandler(this.btnDodajSalu_Click);
-            // 
-            // btnObrisiSalu
-            // 
-            this.btnObrisiSalu.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnObrisiSalu.Location = new System.Drawing.Point(138, 28);
-            this.btnObrisiSalu.Name = "btnObrisiSalu";
-            this.btnObrisiSalu.Size = new System.Drawing.Size(124, 27);
-            this.btnObrisiSalu.TabIndex = 24;
-            this.btnObrisiSalu.Text = "Obrisi Salu";
-            this.btnObrisiSalu.UseVisualStyleBackColor = true;
-            this.btnObrisiSalu.Click += new System.EventHandler(this.btnObrisiSalu_Click);
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(13, 9);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(32, 16);
+            this.label7.TabIndex = 20;
+            this.label7.Text = "Sale";
             // 
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.Ivory;
             this.panel5.Controls.Add(this.dataGridView5);
-            this.panel5.Controls.Add(this.button2);
-            this.panel5.Controls.Add(this.button5);
-            this.panel5.Controls.Add(this.button4);
+            this.panel5.Controls.Add(this.btnDodajPisca);
+            this.panel5.Controls.Add(this.btnUpdate);
+            this.panel5.Controls.Add(this.btnDodajPredstavu);
             this.panel5.Controls.Add(this.button3);
             this.panel5.Controls.Add(this.btnPrikaziPredstave);
             this.panel5.Controls.Add(this.label8);
@@ -552,69 +555,6 @@
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(412, 290);
             this.panel5.TabIndex = 28;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(5, 17);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(65, 16);
-            this.label8.TabIndex = 20;
-            this.label8.Text = "Predstave";
-            // 
-            // btnPrikaziPredstave
-            // 
-            this.btnPrikaziPredstave.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPrikaziPredstave.Location = new System.Drawing.Point(8, 71);
-            this.btnPrikaziPredstave.Name = "btnPrikaziPredstave";
-            this.btnPrikaziPredstave.Size = new System.Drawing.Size(112, 27);
-            this.btnPrikaziPredstave.TabIndex = 23;
-            this.btnPrikaziPredstave.Text = "Prikazi Predstave";
-            this.btnPrikaziPredstave.UseVisualStyleBackColor = true;
-            this.btnPrikaziPredstave.Click += new System.EventHandler(this.btnPrikaziPredstave_Click);
-            // 
-            // button3
-            // 
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(126, 36);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(112, 27);
-            this.button3.TabIndex = 24;
-            this.button3.Text = "Obrisi Predstavu";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // button4
-            // 
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(126, 71);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(112, 27);
-            this.button4.TabIndex = 25;
-            this.button4.Text = "Dodaj Predstavu";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // button5
-            // 
-            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(244, 36);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(122, 27);
-            this.button5.TabIndex = 26;
-            this.button5.Text = "Update predstava";
-            this.button5.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(244, 71);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(122, 27);
-            this.button2.TabIndex = 27;
-            this.button2.Text = "Dodaj pisca predstave";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // dataGridView5
             // 
@@ -640,7 +580,7 @@
             dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView5.DefaultCellStyle = dataGridViewCellStyle8;
             this.dataGridView5.GridColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridView5.Location = new System.Drawing.Point(61, 121);
+            this.dataGridView5.Location = new System.Drawing.Point(126, 82);
             this.dataGridView5.Name = "dataGridView5";
             dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
@@ -653,9 +593,85 @@
             this.dataGridView5.RowHeadersWidth = 42;
             this.dataGridView5.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridView5.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView5.Size = new System.Drawing.Size(305, 160);
+            this.dataGridView5.Size = new System.Drawing.Size(272, 203);
             this.dataGridView5.TabIndex = 28;
             this.dataGridView5.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView5_CellMouseDoubleClick);
+            // 
+            // btnDodajPisca
+            // 
+            this.btnDodajPisca.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDodajPisca.Location = new System.Drawing.Point(126, 36);
+            this.btnDodajPisca.Name = "btnDodajPisca";
+            this.btnDodajPisca.Size = new System.Drawing.Size(124, 40);
+            this.btnDodajPisca.TabIndex = 27;
+            this.btnDodajPisca.Text = "Dodaj pisca predstave";
+            this.btnDodajPisca.UseVisualStyleBackColor = true;
+            this.btnDodajPisca.Click += new System.EventHandler(this.btnDodajPisca_Click);
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdate.Location = new System.Drawing.Point(3, 82);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(112, 27);
+            this.btnUpdate.TabIndex = 26;
+            this.btnUpdate.Text = "Update predstavu";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
+            // btnDodajPredstavu
+            // 
+            this.btnDodajPredstavu.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDodajPredstavu.Location = new System.Drawing.Point(3, 147);
+            this.btnDodajPredstavu.Name = "btnDodajPredstavu";
+            this.btnDodajPredstavu.Size = new System.Drawing.Size(113, 27);
+            this.btnDodajPredstavu.TabIndex = 25;
+            this.btnDodajPredstavu.Text = "Dodaj Predstavu";
+            this.btnDodajPredstavu.UseVisualStyleBackColor = true;
+            this.btnDodajPredstavu.Click += new System.EventHandler(this.btnDodajPredstavu_Click);
+            // 
+            // button3
+            // 
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.Location = new System.Drawing.Point(3, 115);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(112, 27);
+            this.button3.TabIndex = 24;
+            this.button3.Text = "Obrisi Predstavu";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // btnPrikaziPredstave
+            // 
+            this.btnPrikaziPredstave.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPrikaziPredstave.Location = new System.Drawing.Point(3, 38);
+            this.btnPrikaziPredstave.Name = "btnPrikaziPredstave";
+            this.btnPrikaziPredstave.Size = new System.Drawing.Size(112, 38);
+            this.btnPrikaziPredstave.TabIndex = 23;
+            this.btnPrikaziPredstave.Text = "Prikazi Predstave";
+            this.btnPrikaziPredstave.UseVisualStyleBackColor = true;
+            this.btnPrikaziPredstave.Click += new System.EventHandler(this.btnPrikaziPredstave_Click);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(5, 17);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(72, 16);
+            this.label8.TabIndex = 20;
+            this.label8.Text = "Predstave:";
+            // 
+            // btnDodeliUlogu
+            // 
+            this.btnDodeliUlogu.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDodeliUlogu.Location = new System.Drawing.Point(12, 121);
+            this.btnDodeliUlogu.Name = "btnDodeliUlogu";
+            this.btnDodeliUlogu.Size = new System.Drawing.Size(124, 27);
+            this.btnDodeliUlogu.TabIndex = 20;
+            this.btnDodeliUlogu.Text = "Dodeli ulogu";
+            this.btnDodeliUlogu.UseVisualStyleBackColor = true;
+            this.btnDodeliUlogu.Click += new System.EventHandler(this.btnDodeliUlogu_Click);
             // 
             // FormAdmin
             // 
@@ -671,6 +687,8 @@
             this.Controls.Add(this.panel2);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "FormAdmin";
             this.Text = "Administratorski rezim rada";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -732,12 +750,13 @@
         private System.Windows.Forms.Button btnObrisiSalu;
         private System.Windows.Forms.Button btnDodajSalu;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.Button btnDodajPredstavu;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button btnPrikaziPredstave;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.DataGridView dataGridView5;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnDodajPisca;
+        private System.Windows.Forms.Button btnDodeliUlogu;
     }
 }
