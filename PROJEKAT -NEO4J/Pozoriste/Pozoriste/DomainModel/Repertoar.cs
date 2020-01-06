@@ -8,12 +8,11 @@ namespace Pozoriste.DomainModel
 {
     public class Repertoar
     {
-      //  DateTime datum { get; set; }
+        string Datum { get; set; }
         public List<Predstava> predstave { get; set; }
 
         public void AddPredstava(Predstava p)
         {
-           
             this.predstave.Add(p);
         }
     }

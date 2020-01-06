@@ -93,6 +93,12 @@
     <Compile Include="FormDodajZaposlenog.Designer.cs">
       <DependentUpon>FormDodajZaposlenog.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormDodavanjeSale.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDodavanjeSale.Designer.cs">
+      <DependentUpon>FormDodavanjeSale.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormKreiranjeRepertoara.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -111,6 +117,12 @@
     <Compile Include="FormPocetna.Designer.cs">
       <DependentUpon>FormPocetna.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormUpdateZaposleni.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormUpdateZaposleni.Designer.cs">
+      <DependentUpon>FormUpdateZaposleni.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -125,6 +137,9 @@
     <EmbeddedResource Include="FormDodajZaposlenog.resx">
       <DependentUpon>FormDodajZaposlenog.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormDodavanjeSale.resx">
+      <DependentUpon>FormDodavanjeSale.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormKreiranjeRepertoara.resx">
       <DependentUpon>FormKreiranjeRepertoara.cs</DependentUpon>
     </EmbeddedResource>
@@ -133,6 +148,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormPocetna.resx">
       <DependentUpon>FormPocetna.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormUpdateZaposleni.resx">
+      <DependentUpon>FormUpdateZaposleni.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -63,3 +63,5 @@ E:\GitHub\Pozoriste\PROJEKAT -NEO4J\Pozoriste\Pozoriste\obj\Debug\Pozoriste.cspr
 E:\GitHub\Pozoriste\PROJEKAT -NEO4J\Pozoriste\Pozoriste\obj\Debug\Pozoriste.exe
 E:\GitHub\Pozoriste\PROJEKAT -NEO4J\Pozoriste\Pozoriste\obj\Debug\Pozoriste.pdb
 E:\GitHub\Pozoriste\PROJEKAT -NEO4J\Pozoriste\Pozoriste\obj\Debug\Pozoriste.csprojAssemblyReference.cache
+E:\GitHub\Pozoriste\PROJEKAT -NEO4J\Pozoriste\Pozoriste\obj\Debug\Pozoriste.FormUpdateZaposleni.resources
+E:\GitHub\Pozoriste\PROJEKAT -NEO4J\Pozoriste\Pozoriste\obj\Debug\Pozoriste.FormDodavanjeSale.resources

@@ -15,7 +15,7 @@ namespace Pozoriste
     {
 
         DataProvider dp = new DataProvider();
-
+        public List<Predstava> rep=new List<Predstava>(); // za repertoar
         public FormKreiranjeRepertoara()
         {
             InitializeComponent();
@@ -33,7 +33,6 @@ namespace Pozoriste
                 listPredstave.Items.Add(p.naslov);
             }
         }
-
         private void btnDodaj_Click(object sender, EventArgs e)
         {
             if (listPredstave.SelectedIndices.Count == 0)
@@ -42,11 +41,25 @@ namespace Pozoriste
             {
                 String naslov = listPredstave.SelectedItems[0].ToString();
                 Predstava p = dp.GetPredstava(naslov);
-               dp.DodajPredstavuURepertoar(p);
+              // dp.DodajPredstavuURepertoar(p);
                listRepertoar.Items.Add(p.naslov);
+                rep.Add(p);
                MessageBox.Show("Dodali ste predstavu u repertoar");
-                
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            String datum = dateTimePicker1.Text;
+            dp.KreirajRepertoar(rep, datum);
+            MessageBox.Show("Repertoar za datum" + datum +" je uspesno kreiran!","Uspesno kreiranje repertoara",MessageBoxButtons.OK,MessageBoxIcon.Information);
+            rep.Clear();
+            this.Close();
+        }
+
+        private void FormKreiranjeRepertoara_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

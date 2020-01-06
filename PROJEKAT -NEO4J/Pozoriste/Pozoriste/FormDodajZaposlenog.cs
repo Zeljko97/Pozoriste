@@ -33,17 +33,18 @@ namespace Pozoriste
             String ime = txtIme.Text;
             String jmbg = txtJMBG.Text;
             String datum = dateTimePicker1.Text;
-            String mesto = txtIme.Text;
+            String mesto = txtMesto.Text;
             int radniStaz = Convert.ToInt32(cbRadniStaz.Text);
             String radnoMesto = cbRadnoMesto.Text;
 
             if (this.dp.AddZaposlen(ime, jmbg, datum, mesto, radniStaz, radnoMesto))
             {
-                MessageBox.Show("Uspesno ste uneli!");
+                MessageBox.Show("Uspesno ste uneli!",ime+" je uspesno dodat",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                this.Close();
             }
             else
             {
-                MessageBox.Show("Dodavanje nije uspesno!");
+                MessageBox.Show("Dodavanje nije uspesno!","Greska!",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
         }
     }
