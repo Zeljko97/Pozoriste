@@ -132,6 +132,7 @@
             this.txtBrojDela.Name = "txtBrojDela";
             this.txtBrojDela.Size = new System.Drawing.Size(125, 23);
             this.txtBrojDela.TabIndex = 6;
+            this.txtBrojDela.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBrojDela_KeyPress);
             // 
             // txtIme
             // 
@@ -139,6 +140,7 @@
             this.txtIme.Name = "txtIme";
             this.txtIme.Size = new System.Drawing.Size(125, 23);
             this.txtIme.TabIndex = 5;
+            this.txtIme.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtIme_KeyPress);
             // 
             // label2
             // 

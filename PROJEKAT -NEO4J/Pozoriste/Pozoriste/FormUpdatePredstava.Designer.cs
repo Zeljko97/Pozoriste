@@ -40,9 +40,9 @@
             // 
             this.btnUpdatePredstava.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnUpdatePredstava.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdatePredstava.Location = new System.Drawing.Point(92, 219);
+            this.btnUpdatePredstava.Location = new System.Drawing.Point(92, 217);
             this.btnUpdatePredstava.Name = "btnUpdatePredstava";
-            this.btnUpdatePredstava.Size = new System.Drawing.Size(145, 30);
+            this.btnUpdatePredstava.Size = new System.Drawing.Size(145, 32);
             this.btnUpdatePredstava.TabIndex = 13;
             this.btnUpdatePredstava.Text = "Azuriraj\r\n";
             this.btnUpdatePredstava.UseVisualStyleBackColor = true;

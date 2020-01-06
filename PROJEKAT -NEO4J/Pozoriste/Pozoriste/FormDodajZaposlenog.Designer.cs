@@ -106,14 +106,17 @@
             this.txtIme.Name = "txtIme";
             this.txtIme.Size = new System.Drawing.Size(161, 25);
             this.txtIme.TabIndex = 5;
+            this.txtIme.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtIme_KeyPress);
             // 
             // txtJMBG
             // 
             this.txtJMBG.Location = new System.Drawing.Point(141, 73);
             this.txtJMBG.Margin = new System.Windows.Forms.Padding(4);
+            this.txtJMBG.MaxLength = 13;
             this.txtJMBG.Name = "txtJMBG";
             this.txtJMBG.Size = new System.Drawing.Size(161, 25);
             this.txtJMBG.TabIndex = 6;
+            this.txtJMBG.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtJMBG_KeyPress);
             // 
             // label6
             // 
@@ -143,6 +146,7 @@
             this.txtMesto.Name = "txtMesto";
             this.txtMesto.Size = new System.Drawing.Size(159, 25);
             this.txtMesto.TabIndex = 9;
+            this.txtMesto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMesto_KeyPress);
             // 
             // cbRadniStaz
             // 
@@ -152,6 +156,7 @@
             this.cbRadniStaz.Name = "cbRadniStaz";
             this.cbRadniStaz.Size = new System.Drawing.Size(159, 27);
             this.cbRadniStaz.TabIndex = 10;
+            this.cbRadniStaz.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbRadniStaz_KeyPress);
             // 
             // cbRadnoMesto
             // 
@@ -167,6 +172,7 @@
             this.cbRadnoMesto.Name = "cbRadnoMesto";
             this.cbRadnoMesto.Size = new System.Drawing.Size(159, 27);
             this.cbRadnoMesto.TabIndex = 11;
+            this.cbRadnoMesto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbRadnoMesto_KeyPress);
             // 
             // btnDodaj
             // 
@@ -184,7 +190,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(338, 388);
+            this.ClientSize = new System.Drawing.Size(328, 388);
             this.Controls.Add(this.btnDodaj);
             this.Controls.Add(this.cbRadnoMesto);
             this.Controls.Add(this.cbRadniStaz);

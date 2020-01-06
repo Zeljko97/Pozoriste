@@ -61,16 +61,18 @@
             this.txtIme.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtIme.Location = new System.Drawing.Point(114, 12);
             this.txtIme.Name = "txtIme";
-            this.txtIme.Size = new System.Drawing.Size(100, 22);
+            this.txtIme.Size = new System.Drawing.Size(121, 22);
             this.txtIme.TabIndex = 2;
+            this.txtIme.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtIme_KeyPress);
             // 
             // txtBrojPredstava
             // 
             this.txtBrojPredstava.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBrojPredstava.Location = new System.Drawing.Point(114, 71);
             this.txtBrojPredstava.Name = "txtBrojPredstava";
-            this.txtBrojPredstava.Size = new System.Drawing.Size(100, 22);
+            this.txtBrojPredstava.Size = new System.Drawing.Size(121, 22);
             this.txtBrojPredstava.TabIndex = 3;
+            this.txtBrojPredstava.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBrojPredstava_KeyPress);
             // 
             // btnDodaj
             // 

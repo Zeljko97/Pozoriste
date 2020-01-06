@@ -29,9 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAdmin));
             this.btnZaposleni = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -56,6 +57,7 @@
             this.btnUpdateZaposleni = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.btnDodeliUlogu = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.listPredstave = new System.Windows.Forms.ListBox();
@@ -79,7 +81,9 @@
             this.button3 = new System.Windows.Forms.Button();
             this.btnPrikaziPredstave = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
-            this.btnDodeliUlogu = new System.Windows.Forms.Button();
+            this.ttDodelaUloge = new System.Windows.Forms.ToolTip(this.components);
+            this.ttRepertoar = new System.Windows.Forms.ToolTip(this.components);
+            this.ttPisac = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -112,8 +116,7 @@
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowHeadersWidth = 42;
-            this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
             this.dataGridView1.Size = new System.Drawing.Size(592, 144);
             this.dataGridView1.TabIndex = 1;
             // 
@@ -148,6 +151,7 @@
             this.btnRepertoar.Size = new System.Drawing.Size(112, 40);
             this.btnRepertoar.TabIndex = 5;
             this.btnRepertoar.Text = "Kreiraj repertoar";
+            this.ttRepertoar.SetToolTip(this.btnRepertoar, "Omoguceno je kreiranje repertoara prikaza predstava za selektovani datum");
             this.btnRepertoar.UseVisualStyleBackColor = false;
             this.btnRepertoar.Click += new System.EventHandler(this.btnRepertoar_Click);
             // 
@@ -351,6 +355,18 @@
             this.panel3.Size = new System.Drawing.Size(153, 364);
             this.panel3.TabIndex = 23;
             // 
+            // btnDodeliUlogu
+            // 
+            this.btnDodeliUlogu.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDodeliUlogu.Location = new System.Drawing.Point(12, 121);
+            this.btnDodeliUlogu.Name = "btnDodeliUlogu";
+            this.btnDodeliUlogu.Size = new System.Drawing.Size(124, 27);
+            this.btnDodeliUlogu.TabIndex = 20;
+            this.btnDodeliUlogu.Text = "Dodeli ulogu";
+            this.ttDodelaUloge.SetToolTip(this.btnDodeliUlogu, "Za selektovanog glumca vrsimo dodelu uloge u izbranoj predstavi");
+            this.btnDodeliUlogu.UseVisualStyleBackColor = true;
+            this.btnDodeliUlogu.Click += new System.EventHandler(this.btnDodeliUlogu_Click);
+            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -453,6 +469,14 @@
             this.dataGridView3.BackgroundColor = System.Drawing.SystemColors.MenuBar;
             this.dataGridView3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.DarkRed;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView3.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView3.GridColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.dataGridView3.Location = new System.Drawing.Point(171, 188);
             this.dataGridView3.MultiSelect = false;
@@ -561,35 +585,35 @@
             this.dataGridView5.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dataGridView5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dataGridView5.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView5.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView5.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView5.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView5.Cursor = System.Windows.Forms.Cursors.Hand;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView5.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView5.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView5.GridColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.dataGridView5.Location = new System.Drawing.Point(126, 82);
             this.dataGridView5.Name = "dataGridView5";
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView5.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView5.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView5.RowHeadersWidth = 42;
             this.dataGridView5.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridView5.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -605,6 +629,7 @@
             this.btnDodajPisca.Size = new System.Drawing.Size(124, 40);
             this.btnDodajPisca.TabIndex = 27;
             this.btnDodajPisca.Text = "Dodaj pisca predstave";
+            this.ttPisac.SetToolTip(this.btnDodajPisca, "Otvara novu formu koja za odredjenu predstavu odredimo ko je napisao.");
             this.btnDodajPisca.UseVisualStyleBackColor = true;
             this.btnDodajPisca.Click += new System.EventHandler(this.btnDodajPisca_Click);
             // 
@@ -661,17 +686,6 @@
             this.label8.Size = new System.Drawing.Size(72, 16);
             this.label8.TabIndex = 20;
             this.label8.Text = "Predstave:";
-            // 
-            // btnDodeliUlogu
-            // 
-            this.btnDodeliUlogu.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDodeliUlogu.Location = new System.Drawing.Point(12, 121);
-            this.btnDodeliUlogu.Name = "btnDodeliUlogu";
-            this.btnDodeliUlogu.Size = new System.Drawing.Size(124, 27);
-            this.btnDodeliUlogu.TabIndex = 20;
-            this.btnDodeliUlogu.Text = "Dodeli ulogu";
-            this.btnDodeliUlogu.UseVisualStyleBackColor = true;
-            this.btnDodeliUlogu.Click += new System.EventHandler(this.btnDodeliUlogu_Click);
             // 
             // FormAdmin
             // 
@@ -758,5 +772,8 @@
         private System.Windows.Forms.DataGridView dataGridView5;
         private System.Windows.Forms.Button btnDodajPisca;
         private System.Windows.Forms.Button btnDodeliUlogu;
+        private System.Windows.Forms.ToolTip ttRepertoar;
+        private System.Windows.Forms.ToolTip ttDodelaUloge;
+        private System.Windows.Forms.ToolTip ttPisac;
     }
 }

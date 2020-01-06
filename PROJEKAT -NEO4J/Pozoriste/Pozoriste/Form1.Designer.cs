@@ -63,9 +63,9 @@
             // btnPredstave
             // 
             this.btnPredstave.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPredstave.Location = new System.Drawing.Point(167, 33);
+            this.btnPredstave.Location = new System.Drawing.Point(167, 34);
             this.btnPredstave.Name = "btnPredstave";
-            this.btnPredstave.Size = new System.Drawing.Size(289, 23);
+            this.btnPredstave.Size = new System.Drawing.Size(289, 29);
             this.btnPredstave.TabIndex = 3;
             this.btnPredstave.Text = "Pogledaj spisak predstava";
             this.btnPredstave.UseVisualStyleBackColor = true;
@@ -118,7 +118,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(783, 345);
+            this.ClientSize = new System.Drawing.Size(783, 337);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.listGlumci);

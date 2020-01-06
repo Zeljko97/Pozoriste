@@ -21,19 +21,28 @@ namespace Pozoriste
 
         private void btnUpdatePredstava_Click(object sender, EventArgs e)
         {
-            String naslov = FormAdmin.predstava.naslov;
-            String zanr = cbZanr.Text;
-            String kratakOpis = txtKratakOpis.Text;
-
-            if (dp.UpdatePredstava(naslov,zanr,kratakOpis))
+            if (!Validacije())
             {
-                MessageBox.Show("Uspesno azuriranje predstave!", "Predstava " + naslov + " je uspesno azurirana dodata ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
             }
             else
             {
-                MessageBox.Show(" Neuspesno azuriranje predstave!", "  GRESKA!! ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                String naslov = FormAdmin.predstava.naslov;
+                String zanr = cbZanr.Text;
+                String kratakOpis = txtKratakOpis.Text;
+
+                if (dp.UpdatePredstava(naslov, zanr, kratakOpis))
+                {
+                    MessageBox.Show("Uspesno azuriranje predstave!", "Predstava " + naslov + " je uspesno azurirana dodata ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show(" Neuspesno azuriranje predstave!", "  GRESKA!! ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
             }
-            this.Close();
+            
         }
 
         private void FormUpdatePredstava_Load(object sender, EventArgs e)
@@ -44,5 +53,22 @@ namespace Pozoriste
             Text = "Azuriranje predstave :" + FormAdmin.predstava.naslov;
 
         }
+
+        #region ogranicenje
+        private bool Validacije()
+        {
+            if (String.IsNullOrEmpty(txtKratakOpis.Text))
+            {
+                MessageBox.Show("Unesite makar nesto u opisu", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            else if (String.IsNullOrEmpty(cbZanr.Text))
+            {
+                MessageBox.Show("Izaberite zanr predstave.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            return true;
+        }
+        #endregion
     }
 }

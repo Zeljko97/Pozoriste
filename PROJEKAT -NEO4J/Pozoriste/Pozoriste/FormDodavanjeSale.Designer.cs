@@ -82,25 +82,31 @@
             // 
             this.txtBrojSale.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBrojSale.Location = new System.Drawing.Point(118, 18);
+            this.txtBrojSale.MaxLength = 3;
             this.txtBrojSale.Name = "txtBrojSale";
             this.txtBrojSale.Size = new System.Drawing.Size(122, 25);
             this.txtBrojSale.TabIndex = 5;
+            this.txtBrojSale.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBrojSale_KeyPress);
             // 
             // txtBrojRedova
             // 
             this.txtBrojRedova.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBrojRedova.Location = new System.Drawing.Point(118, 51);
+            this.txtBrojRedova.MaxLength = 2;
             this.txtBrojRedova.Name = "txtBrojRedova";
             this.txtBrojRedova.Size = new System.Drawing.Size(122, 25);
             this.txtBrojRedova.TabIndex = 6;
+            this.txtBrojRedova.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBrojRedova_KeyPress);
             // 
             // txtSedistePoRedu
             // 
             this.txtSedistePoRedu.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSedistePoRedu.Location = new System.Drawing.Point(118, 82);
+            this.txtSedistePoRedu.MaxLength = 2;
             this.txtSedistePoRedu.Name = "txtSedistePoRedu";
             this.txtSedistePoRedu.Size = new System.Drawing.Size(122, 25);
             this.txtSedistePoRedu.TabIndex = 8;
+            this.txtSedistePoRedu.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSedistePoRedu_KeyPress);
             // 
             // FormDodavanjeSale
             // 

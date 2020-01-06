@@ -22,13 +22,53 @@ namespace Pozoriste
 
         private void btnDodaj_Click(object sender, EventArgs e)
         {
-            string ime = txtIme.Text;
-            int brojPredstava = Int32.Parse(txtBrojPredstava.Text);
+            if (!Validacija())
+            {
+                MessageBox.Show("Popunite sva polja", "Greska", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            else
+            {
+                string ime = txtIme.Text;
+                int brojPredstava = Int32.Parse(txtBrojPredstava.Text);
 
-            dp.AddReziser(ime, brojPredstava);
+                if (dp.AddReziser(ime, brojPredstava))
+                {
+                    MessageBox.Show("Reziser " + ime + " je uspesno dodat.", "Uspesno dodavanje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Doslo je do greske prilikom dodavanja", "Greska", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                
+            }
 
-            MessageBox.Show("Dodali ste rezisera.");
+        }
 
+        private void txtIme_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsLetter(e.KeyChar) && !Char.IsControl(e.KeyChar) && !Char.IsWhiteSpace(e.KeyChar))
+                e.Handled = true;
+        }
+
+        private void txtBrojPredstava_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar) )
+                e.Handled = true;
+        }
+        private bool Validacija()
+        {
+            if (String.IsNullOrEmpty(txtIme.Text))
+            {
+                return false;
+            }
+            else if (String.IsNullOrEmpty(txtBrojPredstava.Text))
+            {
+                return false;
+            }
+            return true;
         }
     }
 }

@@ -35,22 +35,50 @@ namespace Pozoriste
 
         private void btnDodaj_Click(object sender, EventArgs e)
         {
-            String ime = lblIme.Text;
-            String datum = lblDatumRodjenja.Text;
-            String jmbg = lblJMBG.Text;
-            String mesto = txtMesto.Text;
-            int radniStaz = Convert.ToInt32(cbRadniStaz.Text);
-            String radnoMesto = cbRadnoMesto.Text;
-
-            if (this.dp.UpdateZaposlen(ime, jmbg, datum, mesto, radniStaz, radnoMesto))
+            if (!Validacija())
             {
-                MessageBox.Show("Uspesno ste update korisnika!!", ime + " je uspesno dodat", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.Close();
+                return;
             }
             else
             {
-                MessageBox.Show("Dodavanje nije uspesno!", "Greska!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                String ime = lblIme.Text;
+                String datum = lblDatumRodjenja.Text;
+                String jmbg = lblJMBG.Text;
+                String mesto = txtMesto.Text;
+                int radniStaz = Convert.ToInt32(cbRadniStaz.Text);
+                String radnoMesto = cbRadnoMesto.Text;
+
+                if (this.dp.UpdateZaposlen(ime, jmbg, datum, mesto, radniStaz, radnoMesto))
+                {
+                    MessageBox.Show("Uspesno ste update korisnika!!", ime + " je uspesno dodat", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Dodavanje nije uspesno!", "Greska!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
+        #region ogranicenja
+        private bool Validacija()
+        {
+            if (String.IsNullOrEmpty(txtMesto.Text))
+            {
+                MessageBox.Show("Unesite mesto rodjenja", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            else if (String.IsNullOrEmpty(cbRadniStaz.Text))
+            {
+                MessageBox.Show("Unesite Radni staz", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            else if (String.IsNullOrEmpty(cbRadnoMesto.Text))
+            {
+                MessageBox.Show("Unesite radno mesto", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            return true;
+        }
+        #endregion
     }
 }

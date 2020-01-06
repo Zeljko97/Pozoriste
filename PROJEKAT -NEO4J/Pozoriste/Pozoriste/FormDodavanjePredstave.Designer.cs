@@ -75,6 +75,7 @@
             this.txtNaslov.Name = "txtNaslov";
             this.txtNaslov.Size = new System.Drawing.Size(203, 23);
             this.txtNaslov.TabIndex = 3;
+            this.txtNaslov.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNaslov_KeyPress);
             // 
             // txtKratakOpis
             // 
@@ -132,6 +133,7 @@
             this.MinimizeBox = false;
             this.Name = "FormDodavanjePredstave";
             this.Text = "Dodavanje nove predstave";
+            this.Load += new System.EventHandler(this.FormDodavanjePredstave_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

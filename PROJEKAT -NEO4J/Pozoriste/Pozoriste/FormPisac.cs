@@ -54,14 +54,15 @@ namespace Pozoriste
         }
         private void btnNovPisac_Click(object sender, EventArgs e)
         {
-            String ime = txtIme.Text;
-            int brojDela = 0;
-            brojDela = Convert.ToInt32(txtBrojDela.Text);
-            if (ime=="")
+            if (String.IsNullOrEmpty(txtIme.Text))
             {
                 MessageBox.Show("Morate uneti ime i prezime pisca", "Greska", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            String ime = txtIme.Text;
+            int brojDela = 0;
+            brojDela = Convert.ToInt32(txtBrojDela.Text);
+            
             if (dp.AddPisac(ime,brojDela))
             {
                 MessageBox.Show(ime+" je uspesno dodat.", "Dodavanje uspesno", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -92,5 +93,19 @@ namespace Pozoriste
                 MessageBox.Show("Doslo je do greske!", "Brisanje neuspesno", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        #region ogranicenja
+        private void txtIme_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsLetter(e.KeyChar) && !Char.IsControl(e.KeyChar) && !Char.IsWhiteSpace(e.KeyChar))
+                e.Handled = true;
+        }
+
+        private void txtBrojDela_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
+                e.Handled = true;
+        }
+        #endregion
     }
 }

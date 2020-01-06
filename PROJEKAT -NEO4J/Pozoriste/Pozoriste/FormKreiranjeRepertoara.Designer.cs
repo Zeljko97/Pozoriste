@@ -43,10 +43,10 @@
             // 
             // btnPredstave
             // 
-            this.btnPredstave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPredstave.Location = new System.Drawing.Point(15, 7);
+            this.btnPredstave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPredstave.Location = new System.Drawing.Point(23, 12);
             this.btnPredstave.Name = "btnPredstave";
-            this.btnPredstave.Size = new System.Drawing.Size(124, 35);
+            this.btnPredstave.Size = new System.Drawing.Size(141, 35);
             this.btnPredstave.TabIndex = 0;
             this.btnPredstave.Text = "Ucitaj predstave";
             this.btnPredstave.UseVisualStyleBackColor = true;
@@ -97,7 +97,7 @@
             this.btnDodaj.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDodaj.Location = new System.Drawing.Point(170, 83);
             this.btnDodaj.Name = "btnDodaj";
-            this.btnDodaj.Size = new System.Drawing.Size(57, 28);
+            this.btnDodaj.Size = new System.Drawing.Size(57, 40);
             this.btnDodaj.TabIndex = 5;
             this.btnDodaj.Text = ">";
             this.btnDodaj.UseVisualStyleBackColor = true;
@@ -106,9 +106,9 @@
             // btnVrati
             // 
             this.btnVrati.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVrati.Location = new System.Drawing.Point(170, 117);
+            this.btnVrati.Location = new System.Drawing.Point(170, 129);
             this.btnVrati.Name = "btnVrati";
-            this.btnVrati.Size = new System.Drawing.Size(57, 28);
+            this.btnVrati.Size = new System.Drawing.Size(57, 43);
             this.btnVrati.TabIndex = 6;
             this.btnVrati.Text = "<";
             this.btnVrati.UseVisualStyleBackColor = true;
@@ -116,9 +116,9 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(156, 258);
+            this.button1.Location = new System.Drawing.Point(142, 260);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(84, 44);
+            this.button1.Size = new System.Drawing.Size(111, 44);
             this.button1.TabIndex = 7;
             this.button1.Text = "Kreiraj Repertoar";
             this.button1.UseVisualStyleBackColor = true;
@@ -127,18 +127,18 @@
             // dateTimePicker1
             // 
             this.dateTimePicker1.CustomFormat = "yyyy/MM/dd";
-            this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePicker1.Location = new System.Drawing.Point(102, 230);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 22);
+            this.dateTimePicker1.Size = new System.Drawing.Size(168, 24);
             this.dateTimePicker1.TabIndex = 15;
             // 
             // lblDatum
             // 
             this.lblDatum.AutoSize = true;
             this.lblDatum.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDatum.Location = new System.Drawing.Point(109, 212);
+            this.lblDatum.Location = new System.Drawing.Point(99, 212);
             this.lblDatum.Name = "lblDatum";
             this.lblDatum.Size = new System.Drawing.Size(171, 15);
             this.lblDatum.TabIndex = 16;
@@ -148,7 +148,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(390, 358);
+            this.ClientSize = new System.Drawing.Size(390, 321);
             this.Controls.Add(this.lblDatum);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.button1);

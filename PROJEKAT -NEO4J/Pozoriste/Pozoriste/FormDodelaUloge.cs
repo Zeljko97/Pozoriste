@@ -89,5 +89,13 @@ namespace Pozoriste
             dataGridView1.Columns["kratakOpis"].Visible = false;
 
         }
+
+        #region ogranicenje
+        private void txtUloga_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsLetter(e.KeyChar) && !Char.IsControl(e.KeyChar) && !Char.IsWhiteSpace(e.KeyChar))
+                e.Handled = true;
+        }
+        #endregion
     }
 }

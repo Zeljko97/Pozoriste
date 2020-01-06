@@ -21,22 +21,66 @@ namespace Pozoriste
 
         private void btnDodajSalu_Click(object sender, EventArgs e)
         {
-            int brojSale = Convert.ToInt32(txtBrojSale.Text);
-            int brojRedova = Convert.ToInt32(txtBrojRedova.Text);
-           // int brojSedista = Convert.ToInt32(txtBrojSedista.Text);
-            int SedistaPoRedu = Convert.ToInt32(txtSedistePoRedu.Text);
-            int brojSedista = brojRedova * SedistaPoRedu;
-            if (dp.AddSala(brojSale, brojSedista, SedistaPoRedu, brojRedova))
+            if (!Validacija())
             {
-                MessageBox.Show("Uspesno dodavanje sale!", "Sala dodata ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
             }
             else
-	        {
-                MessageBox.Show("NIJE USPELO dodavanje sale!", "GRESKA! ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            {
+                int brojSale = Convert.ToInt32(txtBrojSale.Text);
+                int brojRedova = Convert.ToInt32(txtBrojRedova.Text);
+                // int brojSedista = Convert.ToInt32(txtBrojSedista.Text);
+                int SedistaPoRedu = Convert.ToInt32(txtSedistePoRedu.Text);
+                int brojSedista = brojRedova * SedistaPoRedu;
+                if (dp.AddSala(brojSale, brojSedista, SedistaPoRedu, brojRedova))
+                {
+                    MessageBox.Show("Uspesno dodavanje sale!", "Sala dodata ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("NIJE USPELO dodavanje sale!", "GRESKA! ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
             }
-            
-            
-            this.Close();
         }
+        #region ogranicenja
+        private void txtBrojSale_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
+                e.Handled = true;
+        }
+
+        private void txtBrojRedova_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
+                e.Handled = true;
+        }
+
+        private void txtSedistePoRedu_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
+                e.Handled = true;
+        }
+
+        private bool Validacija()
+        {
+            if (String.IsNullOrEmpty(txtBrojRedova.Text))
+            {
+                MessageBox.Show("Unesite broj redova","Greska",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                return false;
+            } else if (String.IsNullOrEmpty(txtBrojSale.Text))
+            {
+                MessageBox.Show("Unesite broj sale", "Greska", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            else if (String.IsNullOrEmpty(txtSedistePoRedu.Text))
+            {
+                MessageBox.Show("Unesite broj sedista po redu", "Greska", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            return true;
+        }
+        #endregion
     }
 }

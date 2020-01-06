@@ -24,77 +24,16 @@ namespace Pozoriste
 
             dp.PoveziBazu();
         }
-        
+
+        #region Zaposleni
         private void btnZaposleni_Click(object sender, EventArgs e)
         {
             List<Zaposleni> zaposleni = new List<Zaposleni>();
             zaposleni = dp.GetZaposleni();
-
             dataGridView1.DataSource = zaposleni;
+            dataGridView1.Columns["username"].Visible = false;
+            dataGridView1.Columns["password"].Visible = false;
         }
-
-        private void btnGlumci_Click(object sender, EventArgs e)
-        {
-            List<Glumac> glumci = new List<Glumac>();
-            glumci = dp.GetGlumci();
-
-            dataGridView3.DataSource = glumci;
-        }
-
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            FormDodajZaposlenog f = new FormDodajZaposlenog();
-            f.Show();
-        }
-
-        private void btnRepertoar_Click(object sender, EventArgs e)
-        {
-            FormKreiranjeRepertoara f = new FormKreiranjeRepertoara();
-            f.Show();
-        }
-
-        private void btnDodajGlumca_Click(object sender, EventArgs e)
-        {
-            vidljivost(true);
-            for (int i = 0; i < 1000; i++)
-            {
-                cbPredstave.Items.Add(i);
-            }
-        }
-
-        private void btnDodajG_Click(object sender, EventArgs e)
-        {
-            string ime = txtIme.Text;
-            string datum = dateTimePicker1.Text;
-            int zaposlen = Int32.Parse(txtZaposlen.Text);
-            int brojPredstava = Int32.Parse(cbPredstave.Text);
-            dp.AddGlumac(ime, datum, zaposlen, brojPredstava);
-            MessageBox.Show("Uspesno ste dodali glumca",ime+" je uspesno dodat.",MessageBoxButtons.OK,MessageBoxIcon.Information);
-            vidljivost(false);
-            
-        }
-
-        private void btnObrisiGlumca_Click(object sender, EventArgs e)
-        {
-            if(dataGridView3.SelectedRows.Count == 0)
-            {
-                MessageBox.Show("Niste izabrali glumca!");
-                return;
-            }
-            int indexRow = dataGridView3.CurrentRow.Index;
-
-          
-            string ime = (string)dataGridView3[0, indexRow].Value;
-
-            if (dp.DeleteGlumac(ime))
-            {
-                MessageBox.Show("Obrisali ste izabranog glumca iz sistema.");
-            }
-            else { MessageBox.Show("Doslo je do greske."); }
-           
-        }
-
         private void btnObrisiZaposlenog_Click(object sender, EventArgs e)
         {
             if (dataGridView1.SelectedRows.Count == 0)
@@ -103,14 +42,119 @@ namespace Pozoriste
                 return;
             }
             int indexRow = dataGridView1.CurrentRow.Index;
-
-
             string ime = (string)dataGridView1[0, indexRow].Value;
 
-            dp.DeleteZaposlen(ime);
-            MessageBox.Show("Obrisali ste izabranog zaposlenog iz sistema.");
+            if (dp.DeleteZaposlen(ime))
+            {
+                MessageBox.Show("Obrisali ste izabranog zaposlenog iz sistema.", "Uspesno izbrisan glumac", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            else { MessageBox.Show("Doslo je do greske.", "Greska", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+
+        }
+        private void btnUpdateZaposleni_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Niste izabrali Zaposlenog!","Greska",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                return;
+            }
+            int indexRow = dataGridView1.CurrentRow.Index;
+            string ime = (string)dataGridView1[0, indexRow].Value;
+            z = dp.getZaposlen(ime);
+            FormUpdateZaposleni f = new FormUpdateZaposleni();
+            f.Show();
+        }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            FormDodajZaposlenog f = new FormDodajZaposlenog();
+            f.Show();
+        }
+        #endregion
+
+        #region Glumci
+        private void btnGlumci_Click(object sender, EventArgs e)
+        {
+            List<Glumac> glumci = new List<Glumac>();
+            glumci = dp.GetGlumci();
+            dataGridView3.DataSource = glumci;
+        }
+        private void btnDodajGlumca_Click(object sender, EventArgs e)
+        {
+            vidljivost(true);
+            for (int i = 0; i < 1000; i++)
+            {
+                cbPredstave.Items.Add(i);
+            }
+        }
+        private void btnDodajG_Click(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(txtIme.Text))
+            {
+                MessageBox.Show("Unesite ime i prezime glumca", "Greska", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            else if (String.IsNullOrEmpty(txtZaposlen.Text))
+            {
+                MessageBox.Show("Morate uneti godinu zaposlenja", "Greska", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            string ime = txtIme.Text;
+            string datum = dateTimePicker1.Text;
+            int zaposlen = Int32.Parse(txtZaposlen.Text);
+            int brojPredstava = Int32.Parse(cbPredstave.Text);
+            if (dp.AddGlumac(ime, datum, zaposlen, brojPredstava))
+            {
+                MessageBox.Show("Uspesno ste dodali glumca", ime + " je uspesno dodat.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Doslo je do greske prilikom dodavanja novog glumca", "Greska", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            vidljivost(false);
+        }
+        private void btnObrisiGlumca_Click(object sender, EventArgs e)
+        {
+            if (dataGridView3.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Niste izabrali glumca!");
+                return;
+            }
+            int indexRow = dataGridView3.CurrentRow.Index;
+
+            string ime = (string)dataGridView3[0, indexRow].Value;
+
+            if (dp.DeleteGlumac(ime))
+            {
+                MessageBox.Show("Obrisali ste izabranog glumca iz sistema.", "Uspesno izbrisan glumac", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else { MessageBox.Show("Doslo je do greske.", "Greska", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+        }
+        private void btnDodeliUlogu_Click(object sender, EventArgs e)
+        {
+            if (dataGridView3.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Niste izabrali glumca!");
+                return;
+            }
+            int indexRow = dataGridView3.CurrentRow.Index;
+            string ime = (string)dataGridView3[0, indexRow].Value;
+            glumac = dp.GetGlumac(ime);
+            FormDodelaUloge fdu = new FormDodelaUloge();
+            fdu.Show();
+
         }
 
+        #endregion
+
+        #region Repertoar
+        private void btnRepertoar_Click(object sender, EventArgs e)
+        {
+            FormKreiranjeRepertoara f = new FormKreiranjeRepertoara();
+            f.Show();
+        }
+
+        #endregion
 
         #region dodatno
         private void vidljivost(bool s)
@@ -141,45 +185,18 @@ namespace Pozoriste
         }
         #endregion
 
-        private void btnPredstave_Click(object sender, EventArgs e)
-        {
-            UcitajPredstave();
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-
+        #region Reziseri
         private void btnReziseri_Click_1(object sender, EventArgs e)
         {
             List<Reziser> reziseri = new List<Reziser>();
             reziseri = dp.GetReziseri();
-
             dataGridView2.DataSource = reziseri;
         }
-
         private void btnDodajRezisera_Click_1(object sender, EventArgs e)
         {
             FormNoviReziser f = new FormNoviReziser();
             f.Show();
         }
-
-        private void btnObrisiRezisera_Click_1(object sender, EventArgs e)
-        {
-            if (dataGridView2.SelectedRows.Count == 0)
-            {
-                MessageBox.Show("Niste izabrali rezisera!");
-                return;
-            }
-            int indexRow = dataGridView2.CurrentRow.Index;
-            string ime = (string)dataGridView2[0, indexRow].Value;
-
-            dp.DeleteRezisera(ime);
-            MessageBox.Show("Obrisali ste izabranog rezisera iz sistema.");
-        }
-
         private void btnReziraj_Click(object sender, EventArgs e)
         {
             if (dataGridView2.SelectedRows.Count == 0)
@@ -192,29 +209,33 @@ namespace Pozoriste
 
             string text = listPredstave.GetItemText(listPredstave.SelectedItem);
 
-            dp.ReziraoJe(ime, text);
-            MessageBox.Show("Reziser " + ime + "  je rezirao predstavu: " + text, "Informacija dodavanja grane", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (dp.ReziraoJe(ime, text))
+            {
+                MessageBox.Show("Reziser " + ime + "  je rezirao predstavu: " + text, "Informacija dodavanja grane", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else { MessageBox.Show("Doslo je do greske.", "Greska", MessageBoxButtons.OK, MessageBoxIcon.Error); }
             listPredstave.ClearSelected();
         }
-
-        private void btnPredstave_Click_1(object sender, EventArgs e)
+        private void btnObrisiRezisera_Click_1(object sender, EventArgs e)
         {
-            UcitajPredstave();
-        }
-
-        private void btnUpdateZaposleni_Click(object sender, EventArgs e)
-        {
-            if (dataGridView1.SelectedRows.Count == 0)
+            if (dataGridView2.SelectedRows.Count == 0)
             {
-                MessageBox.Show("Niste izabrali glumca!");
+                MessageBox.Show("Niste izabrali rezisera!");
                 return;
             }
-            int indexRow = dataGridView1.CurrentRow.Index;
-            string ime = (string)dataGridView1[0, indexRow].Value;
-            z = dp.getZaposlen(ime);
-            FormUpdateZaposleni f = new FormUpdateZaposleni();
-            f.Show();
+            int indexRow = dataGridView2.CurrentRow.Index;
+            string ime = (string)dataGridView2[0, indexRow].Value;
+
+            if (dp.DeleteRezisera(ime))
+            {
+                MessageBox.Show("Obrisali ste izabranog rezisera iz sistema.", "Uspesno izbrisan reziser", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else { MessageBox.Show("Doslo je do greske.", "Greska", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+
         }
+
+        #endregion
+
         #region sale
         
         private void btnPrikaziSale_Click(object sender, EventArgs e)
@@ -259,6 +280,7 @@ namespace Pozoriste
             
         }
         #endregion
+        
         #region predstave
         private void btnPrikaziPredstave_Click(object sender, EventArgs e)
         {
@@ -270,7 +292,10 @@ namespace Pozoriste
             dataGridView5.Columns["reditelj"].Visible = false;
             dataGridView5.Columns["pisac"].Visible = false;
         }
-
+        private void btnPredstave_Click(object sender, EventArgs e)
+        {
+            UcitajPredstave();
+        }
         private void dataGridView5_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (dataGridView5.SelectedRows.Count == 0)
@@ -319,7 +344,10 @@ namespace Pozoriste
             fup.Show();
 
         }
-
+        private void btnPredstave_Click_1(object sender, EventArgs e)
+        {
+            UcitajPredstave();
+        }
         private void btnDodajPredstavu_Click(object sender, EventArgs e)
         {
             FormDodavanjePredstave fdp = new FormDodavanjePredstave();
@@ -340,21 +368,6 @@ namespace Pozoriste
         }
         #endregion
 
-
-
-        private void btnDodeliUlogu_Click(object sender, EventArgs e)
-        {
-            if (dataGridView3.SelectedRows.Count == 0)
-            {
-                MessageBox.Show("Niste izabrali glumca!");
-                return;
-            }
-            int indexRow = dataGridView3.CurrentRow.Index;
-            string ime = (string)dataGridView3[0, indexRow].Value;
-            glumac = dp.GetGlumac(ime);
-            FormDodelaUloge fdu = new FormDodelaUloge();
-            fdu.Show();
-
-        }
+        
     }
 }
