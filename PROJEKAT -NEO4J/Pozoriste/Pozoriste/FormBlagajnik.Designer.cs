@@ -42,6 +42,8 @@
             this.lbCena = new System.Windows.Forms.Label();
             this.btnRezervacija = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -151,9 +153,9 @@
             this.lbCena.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbCena.Location = new System.Drawing.Point(89, 189);
             this.lbCena.Name = "lbCena";
-            this.lbCena.Size = new System.Drawing.Size(47, 15);
+            this.lbCena.Size = new System.Drawing.Size(15, 15);
             this.lbCena.TabIndex = 44;
-            this.lbCena.Text = "label6";
+            this.lbCena.Text = "0";
             // 
             // btnRezervacija
             // 
@@ -174,11 +176,32 @@
             this.panel1.Size = new System.Drawing.Size(258, 19);
             this.panel1.TabIndex = 46;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(12, 346);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(121, 42);
+            this.button1.TabIndex = 47;
+            this.button1.Text = "Obrisi sve rezervacije";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // label6
+            // 
+            this.label6.Location = new System.Drawing.Point(12, 274);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(251, 41);
+            this.label6.TabIndex = 0;
+            this.label6.Text = "Rezervacija se odnosi na jednu predstavu. Pritisnite dugme Rezervacija pre nego s" +
+    "to predjete na sledecu predstavu, ";
+            // 
             // FormBlagajnik
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(714, 475);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnRezervacija);
             this.Controls.Add(this.lbCena);
@@ -219,5 +242,7 @@
         private System.Windows.Forms.Label lbCena;
         private System.Windows.Forms.Button btnRezervacija;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label6;
     }
 }

@@ -10,6 +10,7 @@ namespace Pozoriste.DomainModel
     {
         public List<Sediste> sedista { get; set; }
         public Prikaz prikaz { get; set; }
-        public String brojRezSedista { get; set; }
+        public String brojSedista { get; set; }
+        public Sala sala { get; set; }
     }
 }

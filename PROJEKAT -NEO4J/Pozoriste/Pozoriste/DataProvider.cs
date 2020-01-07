@@ -132,6 +132,8 @@ namespace Pozoriste
             return predstave;
         }
         #endregion
+
+
         #region Predstave
         public List<Predstava> GetPredstave()
         {
@@ -191,6 +193,9 @@ namespace Pozoriste
             return true;
         }
         #endregion
+
+
+
         #region Reziseri
         public List<Reziser> GetReziseri()
         {
@@ -537,27 +542,38 @@ namespace Pozoriste
         }
         public bool zauzmiSediste(Rezervacija r, String predstava, String sala)
         {
-            var query2 = new CypherQuery("match ((q:Sala)-[:U_SALI]-(m:Prikaz)-[:ODIGRAVA_SE]-(b:Predstava))" +
-                " where m.datum='" + r.prikaz.datum + "' and m.vreme='" + r.prikaz.vreme + "'" +
-                " and b.naslov='" + predstava + "' and q.brojSale=" + Int32.Parse(sala)+
-                " create (n:Rezervacija {brojSedista:'" + r.brojRezSedista + "'})", new Dictionary<string, object>(), CypherResultMode.Set);
-           
-            try
-            {
-                ((IRawGraphClient)client).ExecuteCypher(query2);
-            }
-            catch (Exception e)
-            {
-                return false;
-            }
-            // return true;
-          /*  foreach (Sediste s in r.sedista)
-            {
-                var query = new CypherQuery("match (r:Rezervacija)-[:ZAKAZAO]-(b:Gost)" +
-                    "where r.brojSedista='" + r.brojRezSedista  +
-                    "create (n:Sediste {red:'" + s.red + "', brojSedista:'" + s.brojSedista + "'})", new Dictionary<string, object>(), CypherResultMode.Set);
-              
+
+            List<Sediste> sedista = r.sedista;
+
+          //  for (int i = 0; i < sedista.Count; i++)
+          //  {
+                var query2 = new CypherQuery("match ((q:Sala)-[:U_SALI]-(m:Prikaz)-[:ODIGRAVA_SE]-(b:Predstava))" +
+                    " where m.datum='" + r.prikaz.datum + "' and m.vreme='" + r.prikaz.vreme + "'" +
+                    " and b.naslov='" + predstava + "' and q.brojSale=" + Int32.Parse(sala) +
+                    " create (n:Rezervacija {brojSedista:'" + r.brojSedista + "'})" +
+                    " create (n)-[:REZERVISAO]->(m)" /*+
+                    " create (p:Sediste {brojSedista: " + sedista[i].brojSedista + ", red: " + sedista[i].red + "})" +
+                    " create (n)-[:ZA_SEDISTE]->(p)" +
+                    " create (p)-[:SEDISTE_U]->(q)"*/,new Dictionary<string, object>(), CypherResultMode.Set);
+
                 try
+                {
+                    ((IRawGraphClient)client).ExecuteCypher(query2);
+                }
+                catch (Exception e)
+                {
+                    return false;
+                }
+
+            for (int i = 0; i < sedista.Count; i++)
+            {
+
+                 var query = new CypherQuery("MATCH (n:Rezervacija),(q:Sala) where n.brojSedista = '" + r.brojSedista + "' and q.brojSale = " + Int32.Parse(sala) +  
+                    " create (p:Sediste {brojSedista: " + sedista[i].brojSedista + ", red: " + sedista[i].red + "})" +
+                    " create (n)-[:ZA_SEDISTE]->(p)" +
+                    " create (p)-[:SEDISTE_U]->(q)", new Dictionary<string, object>(), CypherResultMode.Set);
+
+                 try
                 {
                     ((IRawGraphClient)client).ExecuteCypher(query);
                 }
@@ -565,11 +581,104 @@ namespace Pozoriste
                 {
                     return false;
                 }
+            }
 
-            }*/
+
+            
+          
             return true;
 
         }
+
+        public bool DeleteRezervacije()
+        {
+            var query = new CypherQuery("MATCH (n:Rezervacija) DETACH DELETE n ", new Dictionary<string, object>(), CypherResultMode.Set);
+
+            try
+            {
+                ((IRawGraphClient)client).ExecuteCypher(query);
+
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+            return true;
+        }
+        #endregion
+
+
+        #region Sediste
+
+        public List<Sediste> GetSedistaPoSali(int brojSale)
+        {
+            Dictionary<string, object> queryDict = new Dictionary<string, object>();
+            var query = new CypherQuery("MATCH (p:Sala)<-[:SEDISTE_U]-(s:Sediste) where p.brojSale = " + brojSale + " return s", queryDict, CypherResultMode.Set);
+
+            List<Sediste> sedista = ((IRawGraphClient)client).ExecuteGetCypherResults<Sediste>(query).ToList();
+            return sedista;
+        }
+
+        public bool AddSediste(int brojReda, int brojSedista, Sala sala)
+        {
+            var query = new CypherQuery("CREATE (n:Sediste {brojReda: " + brojReda + ", brojSedista: " + brojSedista + "})", new Dictionary<string, object>(), CypherResultMode.Set);
+
+            try
+            {
+                ((IRawGraphClient)client).ExecuteCypher(query);
+
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+            
+            query = new CypherQuery("MATCH(a:Sediste),(b:Sala) WHERE a.brojSedista=" + brojSedista + " and a.brojReda = " + brojReda + 
+                " and b.brojSale = " + sala.brojSale + " CREATE (a)-[:SEDISTE_U]->(b)", new Dictionary<string, object>(), CypherResultMode.Set);
+            
+            try
+            {
+                ((IRawGraphClient)client).ExecuteCypher(query);
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public bool OslobodiSediste(int red, int brojSedista)
+        {
+            var query = new CypherQuery("MATCH (n:Sediste) where n.red = " + red + " and n.brojSedista = " + brojSedista + " DETACH DELETE n", new Dictionary<string, object>(), CypherResultMode.Set);
+
+            try
+            {
+                ((IRawGraphClient)client).ExecuteCypher(query);
+
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public bool DeleteSedista()
+        {
+            var query = new CypherQuery("MATCH (n:Sediste) DETACH DELETE n ", new Dictionary<string, object>(), CypherResultMode.Set);
+
+            try
+            {
+                ((IRawGraphClient)client).ExecuteCypher(query);
+
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+            return true;
+        }
+
         #endregion
 
     }

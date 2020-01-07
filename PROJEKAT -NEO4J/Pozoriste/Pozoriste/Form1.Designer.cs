@@ -63,7 +63,7 @@
             // btnPredstave
             // 
             this.btnPredstave.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPredstave.Location = new System.Drawing.Point(167, 34);
+            this.btnPredstave.Location = new System.Drawing.Point(63, 248);
             this.btnPredstave.Name = "btnPredstave";
             this.btnPredstave.Size = new System.Drawing.Size(289, 29);
             this.btnPredstave.TabIndex = 3;
@@ -74,7 +74,7 @@
             // listPredstave
             // 
             this.listPredstave.HideSelection = false;
-            this.listPredstave.Location = new System.Drawing.Point(167, 106);
+            this.listPredstave.Location = new System.Drawing.Point(63, 315);
             this.listPredstave.Name = "listPredstave";
             this.listPredstave.Size = new System.Drawing.Size(307, 194);
             this.listPredstave.TabIndex = 4;
@@ -88,16 +88,16 @@
             // listGlumci
             // 
             this.listGlumci.HideSelection = false;
-            this.listGlumci.Location = new System.Drawing.Point(507, 106);
+            this.listGlumci.Location = new System.Drawing.Point(399, 315);
             this.listGlumci.Name = "listGlumci";
-            this.listGlumci.Size = new System.Drawing.Size(241, 194);
+            this.listGlumci.Size = new System.Drawing.Size(333, 194);
             this.listGlumci.TabIndex = 5;
             this.listGlumci.UseCompatibleStateImageBehavior = false;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(164, 79);
+            this.label1.Location = new System.Drawing.Point(60, 289);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(127, 13);
             this.label1.TabIndex = 6;
@@ -106,7 +106,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(504, 83);
+            this.label2.Location = new System.Drawing.Point(396, 289);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(97, 13);
             this.label2.TabIndex = 7;
@@ -117,8 +117,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(783, 337);
+            this.ClientSize = new System.Drawing.Size(783, 543);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.listGlumci);

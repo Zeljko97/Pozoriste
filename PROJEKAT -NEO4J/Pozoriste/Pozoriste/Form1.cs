@@ -84,5 +84,29 @@ namespace Pozoriste
 
 
         }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            Sala s = dp.GetSala(1);
+            for (int i = 0; i < s.brojRedova; i++)
+            {
+                for (int j = 0; j < s.brojSedistaPoRedu; j++)
+                {
+                    dp.AddSediste(i, j, s);
+                }
+            }
+            MessageBox.Show("Dodato");
+        }
+
+        private void button1_Click_2(object sender, EventArgs e)
+        {
+            List<Rezervacija> rez = new List<Rezervacija>();
+            rez = dp.GetRezervacije();
+
+            foreach (Rezervacija g in rez)
+            {
+                listGlumci.Items.Add(g.prikaz.datum);
+            }
+        }
     }
 }

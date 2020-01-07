@@ -122,3 +122,6 @@ MATCH (a:Prikaz),(b:Predstava) WHERE a.cena='400' AND b.naslov='Tako je (ako vam
 
 
 MATCH (a:Sala),(b:Pozoriste) CREATE (a)-[:NALAZI_SE]->(b)
+
+
+
