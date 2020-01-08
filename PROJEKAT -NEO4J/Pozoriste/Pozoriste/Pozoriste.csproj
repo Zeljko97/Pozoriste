@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataProvider.cs" />
+    <Compile Include="DomainModel\Administrator.cs" />
     <Compile Include="DomainModel\Glumac.cs" />
     <Compile Include="DomainModel\Pisac.cs" />
     <Compile Include="DomainModel\Predstava.cs" />
@@ -117,6 +118,12 @@
     <Compile Include="FormKreiranjeRepertoara.Designer.cs">
       <DependentUpon>FormKreiranjeRepertoara.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormLogInAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormLogInAdmin.Designer.cs">
+      <DependentUpon>FormLogInAdmin.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormNoviReziser.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -173,6 +180,9 @@
     <EmbeddedResource Include="FormKreiranjeRepertoara.resx">
       <DependentUpon>FormKreiranjeRepertoara.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormLogInAdmin.resx">
+      <DependentUpon>FormLogInAdmin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormNoviReziser.resx">
       <DependentUpon>FormNoviReziser.cs</DependentUpon>
     </EmbeddedResource>
@@ -190,19 +200,19 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -211,6 +221,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Hamlin_theatre.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="14168-arko-arts-theatre.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Boulevard-2.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

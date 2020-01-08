@@ -31,8 +31,8 @@ namespace Pozoriste
             List<Zaposleni> zaposleni = new List<Zaposleni>();
             zaposleni = dp.GetZaposleni();
             dataGridView1.DataSource = zaposleni;
-            dataGridView1.Columns["username"].Visible = false;
-            dataGridView1.Columns["password"].Visible = false;
+           // dataGridView1.Columns["username"].Visible = false;
+          //  dataGridView1.Columns["password"].Visible = false;
         }
         private void btnObrisiZaposlenog_Click(object sender, EventArgs e)
         {

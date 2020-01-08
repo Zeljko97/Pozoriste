@@ -29,7 +29,7 @@ namespace Pozoriste
 
         private void btnAdmin_Click(object sender, EventArgs e)
         {
-            FormAdmin f = new FormAdmin();
+            FormLogInAdmin f = new FormLogInAdmin();
             f.Show();
         }
 
@@ -47,20 +47,24 @@ namespace Pozoriste
 
         private void btnPredstave_Click(object sender, EventArgs e)
         {
+            label1.Visible = true;
+            label2.Visible = true;
+            label3.Visible = true;
+            listPredstave.Visible = true;
+            listGlumci.Visible = true;
+
             List<Predstava> predstave = new List<Predstava>();
 
             predstave = dp.GetPredstave();
 
             foreach (Predstava p in predstave)
             {
+                Reziser r = dp.GetReziserByPredstava(p.naslov);
                 listPredstave.Items.Add(p.naslov);
+                listPredstave.Items.Add("Reziser: " + r.ime);
+                listPredstave.Items.Add("");
             }
-            
-        }
 
-        private void listPredstave_ItemChecked(object sender, ItemCheckedEventArgs e)
-        {
-            
         }
 
         private void listPredstave_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -106,6 +110,61 @@ namespace Pozoriste
             foreach (Rezervacija g in rez)
             {
                 listGlumci.Items.Add(g.prikaz.datum);
+            }
+        }
+
+        private void btnRepertoar_Click(object sender, EventArgs e)
+        {
+            listRepertoar.Visible = true;
+            Repertoar r = new Repertoar();
+            r = dp.GetRepertoar(dateTimePicker1.Text);
+            if(r==null)
+            {
+                MessageBox.Show("Za ovaj datum nema repertoara.");
+                return;
+            }
+            r.predstave = dp.GetPredstavePoDatumuIgranja(r.datum);
+
+           
+           
+            foreach(Predstava p in r.predstave)
+            {
+                listRepertoar.Items.Add(p.naslov);
+            }
+        }
+
+        private void listRepertoar_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listGlumci_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+
+        }
+
+        private void listPredstave_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listGlumci_ItemActivate(object sender, EventArgs e)
+        {
+            
+            int i = listGlumci.SelectedIndices[0];
+            string s = listGlumci.Items[i].Text;
+            listGlumci.Clear();
+            Glumac glumac = dp.GetGlumac(s);
+            List<Predstava> predstave = dp.GetPredstaveByGlumac(s);
+
+            listGlumci.Items.Add("- Ime: " + glumac.ime);
+            listGlumci.Items.Add("- Broj predstava: " + glumac.brojPredstava.ToString());
+            listGlumci.Items.Add("- Zaposlen (godina): " + glumac.zaposlen.ToString());
+            listGlumci.Items.Add("- Predstave:");
+            foreach(Predstava p in predstave)
+            {
+                listGlumci.Items.Add(p.naslov);
             }
         }
     }

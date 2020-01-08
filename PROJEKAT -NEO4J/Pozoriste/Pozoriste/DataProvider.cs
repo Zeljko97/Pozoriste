@@ -151,6 +151,25 @@ namespace Pozoriste
             Predstava p = ((IRawGraphClient)client).ExecuteGetCypherResults<Predstava>(query).SingleOrDefault();
             return p;
         }
+
+        public List<Predstava> GetPredstavePoDatumuIgranja(string datum)
+        {
+            Dictionary<string, object> queryDict = new Dictionary<string, object>();
+            var query = new CypherQuery("MATCH (n:Predstava)<-[:NA_REPERTOARU]-(m:Repertoar {datum:'" + datum + "'}) return n", queryDict, CypherResultMode.Set);
+
+            List<Predstava> lista = ((IRawGraphClient)client).ExecuteGetCypherResults<Predstava>(query).ToList();
+            return lista;
+        }
+
+        public List<Predstava> GetPredstaveByGlumac(string ime)
+        {
+            Dictionary<string, object> queryDict = new Dictionary<string, object>();
+            var query = new CypherQuery("MATCH (n:Predstava)<-[:GLUMI_U]-(m:Glumac {ime:'" + ime + "'}) return n", queryDict, CypherResultMode.Set);
+
+            List<Predstava> lista = ((IRawGraphClient)client).ExecuteGetCypherResults<Predstava>(query).ToList();
+            return lista;
+        }
+
         public bool AddPredstava(string naslov,string zanr,string kratakOpis)
         {
             //CREATE (RadovanIII:Predstava {naslov:'Radovan III', zanr:'komedija',kratakOpis:'Urnebesna komedija koju treba videti.'})
@@ -205,6 +224,21 @@ namespace Pozoriste
             List<Reziser> reditelji = ((IRawGraphClient)client).ExecuteGetCypherResults<Reziser>(query).ToList();
             return reditelji;
 
+        }
+
+        public Reziser GetReziserByPredstava(string predstava)
+        {
+            Dictionary<string, object> queryDict = new Dictionary<string, object>();
+            var query = new CypherQuery("match (n:Predstava {naslov:'" + predstava + "'})<-[:REZIRAO]-(m:Reziser) return m", queryDict, CypherResultMode.Set);
+
+            Reziser r = ((IRawGraphClient)client).ExecuteGetCypherResults<Reziser>(query).SingleOrDefault();
+            if(r == null)
+            {
+                Reziser r1 = new Reziser();
+                r1.ime = "/";
+                r = r1;
+            }
+            return r;
         }
 
         public bool AddReziser(String ime, int brojPredstava)
@@ -331,6 +365,7 @@ namespace Pozoriste
             Zaposleni p = ((IRawGraphClient)client).ExecuteGetCypherResults<Zaposleni>(query).SingleOrDefault();
             return p;
         }
+      
         public bool AddZaposlen(String ime, String jmbg, String datumRodjenja, String mestoRodjenja, int radniStaz, String radnoMesto)
         {
             var query = new CypherQuery("CREATE (z:Zaposleni {ime:'" + ime + "', jmbg:'" + jmbg + "', datumRodjenja:'" + datumRodjenja + "', mestoRodjenja:'" + mestoRodjenja + "', radniStaz:" + radniStaz + ", radnoMesto:'" + radnoMesto + "'})", new Dictionary<string, object>(), CypherResultMode.Set);
@@ -398,9 +433,29 @@ namespace Pozoriste
 
             return true;
         }
+
+
+        public Administrator GetAdmin(string userName)
+        {
+            Dictionary<string, object> queryDict = new Dictionary<string, object>();
+            var query = new CypherQuery("MATCH (Administrator{ userName:'" + userName + "'}) RETURN Administrator; ", queryDict, CypherResultMode.Set);
+
+            Administrator a = ((IRawGraphClient)client).ExecuteGetCypherResults<Administrator>(query).SingleOrDefault();
+            return a;
+        }
+
         #endregion
 
         #region Repertoar
+        public Repertoar GetRepertoar(string datum)
+        {
+            Dictionary<string, object> queryDict = new Dictionary<string, object>();
+            var query = new CypherQuery("match (n:Repertoar) where n.datum = '" + datum + "' return n;", queryDict, CypherResultMode.Set);
+
+            Repertoar repertoar = ((IRawGraphClient)client).ExecuteGetCypherResults<Repertoar>(query).SingleOrDefault();
+            return repertoar;
+        }
+
         public void DodajPredstavuURepertoar(Predstava p)
         {
             Repertoar r = new Repertoar();
