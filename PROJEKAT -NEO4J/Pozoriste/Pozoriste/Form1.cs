@@ -125,8 +125,6 @@ namespace Pozoriste
             }
             r.predstave = dp.GetPredstavePoDatumuIgranja(r.datum);
 
-           
-           
             foreach(Predstava p in r.predstave)
             {
                 listRepertoar.Items.Add(p.naslov);

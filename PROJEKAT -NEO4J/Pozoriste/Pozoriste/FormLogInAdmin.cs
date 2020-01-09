@@ -19,16 +19,16 @@ namespace Pozoriste
             InitializeComponent();
             dp.PoveziBazu();
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
+            if (String.IsNullOrEmpty(txtUserName.Text))
+            {
+                MessageBox.Show("Niste uneli korisnicko ime","Korisnicko ime je neophodno uneti",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                return;
+            }
             Administrator a = new Administrator();
             a = dp.GetAdmin(txtUserName.Text);
-
-           
-
             FormAdmin f = new FormAdmin();
-
             if(a == null)
             {
                 MessageBox.Show("Pogresno korisnicko ime ili lozinka.");
@@ -43,8 +43,7 @@ namespace Pozoriste
             {
                 MessageBox.Show("Pogresno korisnicko ime ili lozinka.");
             }
-
-
         }
+
     }
 }

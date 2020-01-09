@@ -61,5 +61,16 @@ namespace Pozoriste
         {
 
         }
+
+        private void btnUcitajRepertoare_Click(object sender, EventArgs e)
+        {
+            dataGridView1.DataSource = dp.GetRepertoars();
+
+        }
+
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

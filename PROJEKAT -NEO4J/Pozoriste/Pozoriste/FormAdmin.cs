@@ -237,7 +237,6 @@ namespace Pozoriste
         #endregion
 
         #region sale
-        
         private void btnPrikaziSale_Click(object sender, EventArgs e)
         {
             UcitajSale();
@@ -276,8 +275,6 @@ namespace Pozoriste
             {
                 MessageBox.Show("Neuspesno brisanje!!", "GRESKA!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            
         }
         #endregion
         
@@ -366,8 +363,13 @@ namespace Pozoriste
             FormPisac fp = new FormPisac();
             fp.Show();
         }
+
         #endregion
 
-        
+        private void txtZaposlen_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
+                e.Handled = true;
+        }
     }
 }

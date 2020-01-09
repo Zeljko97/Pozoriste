@@ -227,6 +227,7 @@
             this.txtZaposlen.Size = new System.Drawing.Size(116, 21);
             this.txtZaposlen.TabIndex = 12;
             this.txtZaposlen.Visible = false;
+            this.txtZaposlen.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtZaposlen_KeyPress);
             // 
             // cbPredstave
             // 
@@ -539,15 +540,14 @@
             this.dataGridView4.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.dataGridView4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dataGridView4.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
-            this.dataGridView4.ColumnHeadersHeight = 18;
-            this.dataGridView4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dataGridView4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.dataGridView4.GridColor = System.Drawing.SystemColors.ControlLight;
             this.dataGridView4.Location = new System.Drawing.Point(3, 94);
             this.dataGridView4.MultiSelect = false;
             this.dataGridView4.Name = "dataGridView4";
             this.dataGridView4.ReadOnly = true;
-            this.dataGridView4.RowHeadersWidth = 33;
+            this.dataGridView4.RowHeadersWidth = 40;
             this.dataGridView4.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridView4.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView4.Size = new System.Drawing.Size(406, 135);
@@ -605,7 +605,9 @@
             this.dataGridView5.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView5.GridColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.dataGridView5.Location = new System.Drawing.Point(126, 82);
+            this.dataGridView5.MultiSelect = false;
             this.dataGridView5.Name = "dataGridView5";
+            this.dataGridView5.ReadOnly = true;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

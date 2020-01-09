@@ -27,6 +27,7 @@ namespace Pozoriste
             }
             return 1;
         }
+
         #region Glumci
         public  List<Glumac> GetGlumci()
         {
@@ -133,7 +134,6 @@ namespace Pozoriste
         }
         #endregion
 
-
         #region Predstave
         public List<Predstava> GetPredstave()
         {
@@ -178,7 +178,7 @@ namespace Pozoriste
             {
                 ((IRawGraphClient)client).ExecuteCypher(query);
             }
-            catch (Exception e)
+            catch (Exception )
             {
                 return false;
             }
@@ -212,8 +212,6 @@ namespace Pozoriste
             return true;
         }
         #endregion
-
-
 
         #region Reziseri
         public List<Reziser> GetReziseri()
@@ -250,7 +248,7 @@ namespace Pozoriste
                 ((IRawGraphClient)client).ExecuteCypher(query);
 
             }
-            catch (Exception e)
+            catch (Exception )
             {
                 return false;
             }
@@ -265,7 +263,7 @@ namespace Pozoriste
             {
                 ((IRawGraphClient)client).ExecuteCypher(query);
             }
-            catch (Exception e)
+            catch (Exception )
             {
                 return false;
             }
@@ -281,7 +279,7 @@ namespace Pozoriste
                 ((IRawGraphClient)client).ExecuteCypher(query);
 
             }
-            catch (Exception e)
+            catch (Exception )
             {
                 return false;
             }
@@ -307,7 +305,7 @@ namespace Pozoriste
             {
                 ((IRawGraphClient)client).ExecuteCypher(query);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return false;
             }
@@ -321,7 +319,7 @@ namespace Pozoriste
             {
                 ((IRawGraphClient)client).ExecuteCypher(query);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return false;
             }
@@ -335,7 +333,7 @@ namespace Pozoriste
                 ((IRawGraphClient)client).ExecuteCypher(query);
 
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return false;
             }
@@ -343,10 +341,7 @@ namespace Pozoriste
             return true;
         }
 
-
-
         #endregion
-
 
         #region Zaposleni
         public List<Zaposleni> GetZaposleni()
@@ -374,7 +369,7 @@ namespace Pozoriste
             {
                 ((IRawGraphClient)client).ExecuteCypher(query);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return false;
             }
@@ -384,7 +379,7 @@ namespace Pozoriste
             {
                 ((IRawGraphClient)client).ExecuteCypher(query);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return false;
             }
@@ -402,7 +397,7 @@ namespace Pozoriste
             {
                 ((IRawGraphClient)client).ExecuteCypher(query);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return false;
             }
@@ -411,7 +406,7 @@ namespace Pozoriste
             {
                 ((IRawGraphClient)client).ExecuteCypher(query);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return false;
             }
@@ -426,7 +421,7 @@ namespace Pozoriste
                 ((IRawGraphClient)client).ExecuteCypher(query);
 
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return false;
             }
@@ -455,7 +450,14 @@ namespace Pozoriste
             Repertoar repertoar = ((IRawGraphClient)client).ExecuteGetCypherResults<Repertoar>(query).SingleOrDefault();
             return repertoar;
         }
+        public List<Repertoar> GetRepertoars()
+        {
+            Dictionary<string, object> queryDict = new Dictionary<string, object>();
+            var query = new CypherQuery("match (n:Repertoar) return n;", queryDict, CypherResultMode.Set);
 
+            List<Repertoar> r = ((IRawGraphClient)client).ExecuteGetCypherResults<Repertoar>(query).ToList();
+            return r;
+        }
         public void DodajPredstavuURepertoar(Predstava p)
         {
             Repertoar r = new Repertoar();
@@ -469,7 +471,7 @@ namespace Pozoriste
             {
                 ((IRawGraphClient)client).ExecuteCypher(query);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return;
             }
@@ -481,7 +483,7 @@ namespace Pozoriste
                 {
                     ((IRawGraphClient)client).ExecuteCypher(query);
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     return;
                 }
@@ -493,7 +495,6 @@ namespace Pozoriste
 
         //}
         #endregion
-
 
         #region Sale
         public List<Sala> GetSale()
@@ -526,7 +527,7 @@ namespace Pozoriste
             {
                 ((IRawGraphClient)client).ExecuteCypher(query);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return false;
             }
@@ -536,7 +537,7 @@ namespace Pozoriste
             {
                 ((IRawGraphClient)client).ExecuteCypher(query);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return false;
             }
@@ -550,7 +551,7 @@ namespace Pozoriste
             {
                 ((IRawGraphClient)client).ExecuteCypher(query);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return false;
             }
@@ -584,9 +585,7 @@ namespace Pozoriste
         
         #endregion
 
-
         #region Rezervacija
-
         public List<Rezervacija> GetRezervacije()
         {
             Dictionary<string, object> queryDict = new Dictionary<string, object>();
@@ -615,7 +614,7 @@ namespace Pozoriste
                 {
                     ((IRawGraphClient)client).ExecuteCypher(query2);
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     return false;
                 }
@@ -632,19 +631,13 @@ namespace Pozoriste
                 {
                     ((IRawGraphClient)client).ExecuteCypher(query);
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     return false;
                 }
             }
-
-
-            
-          
             return true;
-
         }
-
         public bool DeleteRezervacije()
         {
             var query = new CypherQuery("MATCH (n:Rezervacija) DETACH DELETE n ", new Dictionary<string, object>(), CypherResultMode.Set);
@@ -654,14 +647,13 @@ namespace Pozoriste
                 ((IRawGraphClient)client).ExecuteCypher(query);
 
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return false;
             }
             return true;
         }
         #endregion
-
 
         #region Sediste
 
@@ -681,9 +673,8 @@ namespace Pozoriste
             try
             {
                 ((IRawGraphClient)client).ExecuteCypher(query);
-
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return false;
             }
@@ -695,7 +686,7 @@ namespace Pozoriste
             {
                 ((IRawGraphClient)client).ExecuteCypher(query);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return false;
             }
@@ -709,9 +700,8 @@ namespace Pozoriste
             try
             {
                 ((IRawGraphClient)client).ExecuteCypher(query);
-
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return false;
             }
@@ -725,16 +715,13 @@ namespace Pozoriste
             try
             {
                 ((IRawGraphClient)client).ExecuteCypher(query);
-
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return false;
             }
             return true;
         }
-
         #endregion
-
     }
 }

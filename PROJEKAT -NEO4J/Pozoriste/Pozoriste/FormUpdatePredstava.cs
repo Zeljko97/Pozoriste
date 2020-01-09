@@ -51,7 +51,6 @@ namespace Pozoriste
             lblNaslov.Text = FormAdmin.predstava.naslov;
             cbZanr.Text = FormAdmin.predstava.zanr;
             Text = "Azuriranje predstave :" + FormAdmin.predstava.naslov;
-
         }
 
         #region ogranicenje

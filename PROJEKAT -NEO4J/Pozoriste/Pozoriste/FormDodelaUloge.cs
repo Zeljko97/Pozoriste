@@ -83,10 +83,10 @@ namespace Pozoriste
         private void btnPredstave_Click(object sender, EventArgs e)
         {
             dataGridView2.DataSource = dp.GetPredstave();
-            dataGridView1.Columns["pisac"].Visible = false;
-            dataGridView1.Columns["reditelj"].Visible = false;
-            dataGridView1.Columns["zanr"].Visible = false;
-            dataGridView1.Columns["kratakOpis"].Visible = false;
+            dataGridView2.Columns["pisac"].Visible = false;
+            dataGridView2.Columns["reditelj"].Visible = false;
+            dataGridView2.Columns["zanr"].Visible = false;
+            dataGridView2.Columns["kratakOpis"].Visible = false;
 
         }
 

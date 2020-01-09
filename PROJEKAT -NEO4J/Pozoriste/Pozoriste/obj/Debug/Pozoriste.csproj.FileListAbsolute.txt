@@ -76,3 +76,4 @@ C:\GITHUB\Pozoriste\PROJEKAT -NEO4J\Pozoriste\Pozoriste\obj\Debug\Pozoriste.Form
 C:\GITHUB\Pozoriste\PROJEKAT -NEO4J\Pozoriste\Pozoriste\obj\Debug\Pozoriste.FormUpdateZaposleni.resources
 C:\GITHUB\Pozoriste\PROJEKAT -NEO4J\Pozoriste\Pozoriste\obj\Debug\Pozoriste.FormLogInAdmin.resources
 C:\GITHUB\Pozoriste\PROJEKAT -NEO4J\Pozoriste\Pozoriste\obj\Debug\Pozoriste.csprojResolveAssemblyReference.cache
+E:\GitHub\Pozoriste\PROJEKAT -NEO4J\Pozoriste\Pozoriste\obj\Debug\Pozoriste.FormLogInAdmin.resources
