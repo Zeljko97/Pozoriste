@@ -106,7 +106,7 @@ namespace Pozoriste
                   ////
 
                     
-                    rezervisanaSedista = dp.GetSedistaPoSali(sala.brojSale);
+                    rezervisanaSedista = dp.GetSedistaPoSali(sala.brojSale, cbDatum.Text, cbVreme.Text, cbPredstave.Text);
 
 
                     for (int i = 0; i < brojRedova; i++)
@@ -161,7 +161,12 @@ namespace Pozoriste
                                         }
 
                                         //dodato
-                                        dp.OslobodiSediste(sed.red, sed.brojSedista);
+                                        dp.OslobodiSediste(sed.red, sed.brojSedista, cbDatum.Text, cbVreme.Text);
+                                        if (cenaZaUplatu > 0)
+                                        {
+                                            cenaZaUplatu -= Int32.Parse(p.cena);
+                                            lbCena.Text = cenaZaUplatu.ToString();
+                                        }
                                         MessageBox.Show("Sediste u redu: " + sed.red + " sa brojem: " + sed.brojSedista + " je oslobodjeno.");
                                         //
                                         dugmici.Remove(button);
@@ -252,7 +257,8 @@ namespace Pozoriste
 
                     prikazi = dp.GetPrikazZaPredstavu(cbPredstave.Text);
                     foreach (Prikaz p in prikazi)
-                        if (!cbVreme.Items.Contains(p.vreme))
+                       
+                        if ((!cbVreme.Items.Contains(p.vreme)) && p.datum == cbDatum.Text)
                             cbVreme.Items.Add(p.vreme);
                 }
             }
@@ -295,6 +301,9 @@ namespace Pozoriste
                     MessageBox.Show("Uspesno rezervisano.");
                 else
                     MessageBox.Show("Greska!");
+
+                cenaZaUplatu = 0;
+                lbCena.Text = cenaZaUplatu.ToString();
               
             }
             foreach(Button b in dugmici)

@@ -40,6 +40,7 @@
             this.btnRepertoar = new System.Windows.Forms.Button();
             this.listRepertoar = new System.Windows.Forms.ListView();
             this.label3 = new System.Windows.Forms.Label();
+            this.btnBack = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnAdmin
@@ -165,6 +166,17 @@
             this.label3.Text = "Klikom na ime glumca, mozete videti osnovne informacije o svakom glumcu.";
             this.label3.Visible = false;
             // 
+            // btnBack
+            // 
+            this.btnBack.Location = new System.Drawing.Point(634, 240);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(75, 23);
+            this.btnBack.TabIndex = 12;
+            this.btnBack.Text = "BACK";
+            this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Visible = false;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -173,6 +185,7 @@
             this.BackgroundImage = global::Pozoriste.Properties.Resources.Boulevard_2;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(783, 543);
+            this.Controls.Add(this.btnBack);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.listRepertoar);
             this.Controls.Add(this.btnRepertoar);
@@ -207,6 +220,7 @@
         private System.Windows.Forms.Button btnRepertoar;
         private System.Windows.Forms.ListView listRepertoar;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnBack;
     }
 }
 

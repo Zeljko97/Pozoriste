@@ -52,6 +52,7 @@ namespace Pozoriste
             label3.Visible = true;
             listPredstave.Visible = true;
             listGlumci.Visible = true;
+            btnBack.Visible = true;
 
             List<Predstava> predstave = new List<Predstava>();
 
@@ -163,6 +164,21 @@ namespace Pozoriste
             foreach(Predstava p in predstave)
             {
                 listGlumci.Items.Add(p.naslov);
+            }
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            listGlumci.Clear();
+            int i = listPredstave.SelectedIndices[0];
+            string s = listPredstave.Items[i].Text;
+
+            List<Glumac> glumci = new List<Glumac>();
+            glumci = dp.vratiGlumceKojiGlumeU(s);
+
+            foreach (Glumac g in glumci)
+            {
+                listGlumci.Items.Add(g.ime);
             }
         }
     }

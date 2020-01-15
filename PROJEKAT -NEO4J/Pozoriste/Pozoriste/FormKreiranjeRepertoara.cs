@@ -59,7 +59,11 @@ namespace Pozoriste
 
         private void FormKreiranjeRepertoara_Load(object sender, EventArgs e)
         {
-
+            List<Sala> sale = dp.GetSale();
+            for(int i = 0;i<sale.Count;i++)
+            {
+                cbSala.Items.Add(sale[i].brojSale);
+            }
         }
 
         private void btnUcitajRepertoare_Click(object sender, EventArgs e)
@@ -71,6 +75,23 @@ namespace Pozoriste
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnKreirajPrikaz_Click(object sender, EventArgs e)
+        {
+            string naslov = listPredstave.SelectedItem.ToString();
+            string datum = dateTimePicker3.Text;
+            string vreme = dateTimePicker2.Text;
+            string brojSale = cbSala.SelectedItem.ToString();
+            string cena = txtCena.Text;
+
+            dp.AddPrikaz(naslov, vreme, datum, cena, brojSale);
+            MessageBox.Show("Kreiran prikaz.");
         }
     }
 }
